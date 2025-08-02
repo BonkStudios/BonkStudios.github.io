@@ -95,17 +95,31 @@ h2 {
 }
 
 .projeto {
-  width: 100%;
-  max-width: 700px;
   background-color: #1e1e1e;
   padding: 20px;
   border-radius: 10px;
   border: 1px solid #333;
+  text-align: center;
+  max-width: 1000px;
+  width: 100%;
+  margin: auto;
+}
+
+.projeto iframe {
+  width: 100%;
+  border-radius: 10px;
 }
 
 .projeto h3 {
   color: #ffffff;
-  margin-top: 15px;
+  margin-top: 10px;
+  font-size: 1.5em;
+}
+
+.projeto p {
+  color: #ffffff;
+  margin-top: 10px;
+  font-size: 1.1em;
 }
 
 footer {
