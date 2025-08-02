@@ -91,9 +91,12 @@ h2 {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
   gap: 20px;
+  justify-items: center;
 }
 
 .projeto {
+  width: 100%;
+  max-width: 700px;
   background-color: #1e1e1e;
   padding: 20px;
   border-radius: 10px;
