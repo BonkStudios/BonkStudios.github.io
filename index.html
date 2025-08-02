@@ -10,46 +10,60 @@
 </head>
 
 <body>
-  <header>
+  <header class="main-header">
     <div class="logo">Bonk Studios</div>
     <nav>
-      <ul>
-        <li><a href="#sobre">Sobre</a></li>
-        <li><a href="#projetos">Projetos</a></li>
-        <li><a href="#contacto">Contacto</a></li>
+      <ul class="nav-links">
+        <li><a href="#">Home</a></li>
+        <li><a href="#">Procurar</a></li>
+        <li><a href="#">Bonk Show</a></li>
+        <li><a href="#">Bonk Music</a></li>
+        <li><a href="#">Bonk Play</a></li>
       </ul>
     </nav>
   </header>
 
-  <main>
-    <section class="hero">
-      <h1>Bem-vindo à Bonk Studios</h1>
-      <p>Trabalhamos com paixão em animações, música, jogos e projetos criativos!</p>
-      <a href="#projetos" class="btn">Ver Projetos</a>
-    </section>
-
-    <section id="projetos">
-      <h2>Projetos em Destaque</h2>
-      <div class="projetos-grid">
-        <div class="projeto">
-          <iframe width="960" height="540" src="https://www.youtube.com/embed/ULi8137Tmck?si=GWcm7r4T90PipieP" title="FNAF: A Série | Episódio 1 REMASTER" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
-          <h3>Five Nights at Freddy's: A Série | Episódio 1 REMASTER (A Era de Ouro)</h3>
-          <p>Episódio 1 da Série de FNAF Remasterizado!</p>
-        </div>
-        <!-- Podes adicionar mais projetos aqui -->
+  <section class="banner-carousel">
+    <div class="banner-slide active" style="background-image: url('banner1.jpg')">
+      <div class="banner-info">
+        <h1>The Coffin of Andy and Leyley</h1>
+        <p>Nova série animada do Bonk Show. Estreia em breve!</p>
       </div>
-    </section>
+    </div>
+    <div class="banner-slide" style="background-image: url('banner2.jpg')">
+      <div class="banner-info">
+        <h1>Bonk Music Sessions</h1>
+        <p>Novas músicas e performances dos artistas Bonk!</p>
+      </div>
+    </div>
+    <button class="carousel-btn prev">&#10094;</button>
+    <button class="carousel-btn next">&#10095;</button>
+    <div class="carousel-dots">
+      <span class="dot active"></span>
+      <span class="dot"></span>
+    </div>
+  </section>
 
-    <section id="sobre">
-      <h2>Sobre a Bonk Studios</h2>
-      <p>A Bonk Studios é um estúdio independente focado na criação e promoção de projetos originais de animação, música e jogos. Nosso objetivo é ajudar criadores a desenvolver e apresentar as suas ideias ao mundo.</p>
-    </section>
+  <section class="channel-buttons">
+    <button class="channel-btn">Bonk Show</button>
+    <button class="channel-btn">Bonk Music</button>
+    <button class="channel-btn">Bonk Play</button>
+  </section>
 
-    <section id="contacto">
-      <h2>Contacto</h2>
-      <p>Quer colaborar connosco? Envie um email para <a href="mailto:contact@bonkstudios.com.br">contact@bonkstudios.com.br</a></p>
-    </section>
-  </main>
+  <section class="conteudo-secao">
+    <h2>Séries do Bonk Show</h2>
+    <div class="thumb-carousel">
+      <button class="thumb-btn left">&#10094;</button>
+      <div class="thumbs">
+        <a href="./bonk-show/series/tcoaal.html" class="thumb"><img src="imagens/thumbs/ep1_remaster_fnaf_thumb.png" alt="TCOAAL: A Série" /></a>
+        <a href="./bonk-show/series/fnaf.html" class="thumb"><img src="imagens/thumbs/ep1_remaster_fnaf_thumb.png" alt="FNAF: A Série" /></a>
+        <a href="./bonk-show/series/anatema.html" class="thumb"><img src="imagens/thumbs/ep1_remaster_fnaf_thumb.png" alt="Record of Ragnarock" /></a>
+        <a href="./bonk-show/series/inferno.html" class="thumb"><img src="imagens/thumbs/ep1_remaster_fnaf_thumb.png" alt="Record of Ragnarock" /></a>
+        <!-- Adiciona mais thumbs aqui -->
+      </div>
+      <button class="thumb-btn right">&#10095;</button>
+    </div>
+  </section>
 
   <footer>
     <p>&copy; 2025 Bonk Studios. Todos os direitos reservados.</p>
