@@ -139,7 +139,7 @@ body {
 }
 
 .channel-btn {
-  padding: 10px 20px;
+  padding: 0px 100px;
   border: none;
   border-radius: 20px;
   background-color: #2a2a2a;
@@ -148,17 +148,23 @@ body {
   transition: background-color 0.3s;
 }
 
+.channel-btn-logos {
+  width: 200px;
+  height: 200px;
+  border-radius: 20px;
+}
+
 .channel-btn:hover {
   background-color: #00ffff;
   color: #000;
 }
 
 /* Seção de conteúdo */
-.conteudo-secao {
+.content-section {
   padding: 40px 20px;
 }
 
-.conteudo-secao h2 {
+.content-section h2 {
   font-size: 1.8em;
   margin-bottom: 20px;
   padding-left: 20px;
