@@ -29,7 +29,7 @@ dots.forEach((dot, i) => {
 setInterval(() => {
   const newIndex = (currentSlide + 1) % slides.length;
   showSlide(newIndex);
-}, 7000); // troca a cada 7 segundos
+}, 10000); // troca a cada 10 segundos
 
 // Scroll das thumbs com botões
 const thumbs = document.querySelector('.thumbs');
