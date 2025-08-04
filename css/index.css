@@ -114,6 +114,7 @@ body {
   transform: translateX(-50%);
   display: flex;
   gap: 10px;
+  z-index: 2;
 }
 
 .carousel-dots .dot {
