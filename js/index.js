@@ -36,10 +36,28 @@ const thumbs = document.querySelector('.thumbs');
 const leftBtn = document.querySelector('.thumb-btn.left');
 const rightBtn = document.querySelector('.thumb-btn.right');
 
-leftBtn.addEventListener('click', () => {
-  thumbs.scrollBy({ left: -300, behavior: 'smooth' });
-});
+function getThumbWidth() {
+  const thumb = thumbs.querySelector('.thumb');
+  const style = getComputedStyle(thumb);
+  const margin = parseFloat(style.marginLeft) + parseFloat(style.marginRight);
+  return thumb.offsetWidth + margin;
+}
 
-rightBtn.addEventListener('click', () => {
-  thumbs.scrollBy({ left: 300, behavior: 'smooth' });
-});
+function scrollToThumb(direction) {
+  const thumbWidth = getThumbWidth();
+  const currentScroll = thumbs.scrollLeft;
+
+  // Calcula qual o índice atual de thumb visível
+  const currentIndex = Math.round(currentScroll / thumbWidth);
+
+  const newIndex = direction === 'right'
+    ? currentIndex + 1
+    : currentIndex - 1;
+
+  const newScrollPosition = newIndex * thumbWidth;
+
+  thumbs.scrollTo({ left: newScrollPosition, behavior: 'smooth' });
+}
+
+leftBtn.addEventListener('click', () => scrollToThumb('left'));
+rightBtn.addEventListener('click', () => scrollToThumb('right'));
