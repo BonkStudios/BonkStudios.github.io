@@ -32,32 +32,30 @@ setInterval(() => {
 }, 10000); // troca a cada 10 segundos
 
 // Scroll das thumbs com botões
-const thumbs = document.querySelector('.thumbs');
-const leftBtn = document.querySelector('.thumb-btn.left');
-const rightBtn = document.querySelector('.thumb-btn.right');
+document.querySelectorAll('.thumb-carousel').forEach(carousel => {
+  const thumbs = carousel.querySelector('.thumbs');
+  const leftBtn = carousel.querySelector('.thumb-btn.left');
+  const rightBtn = carousel.querySelector('.thumb-btn.right');
 
-function getThumbWidth() {
-  const thumb = thumbs.querySelector('.thumb');
-  const style = getComputedStyle(thumb);
-  const margin = parseFloat(style.marginLeft) + parseFloat(style.marginRight);
-  return thumb.offsetWidth + margin;
-}
+  function getThumbWidth() {
+    const thumb = thumbs.querySelector('.thumb');
+    const style = getComputedStyle(thumb);
+    const margin = parseFloat(style.marginLeft) + parseFloat(style.marginRight);
+    return thumb.offsetWidth + margin;
+  }
 
-function scrollToThumb(direction) {
-  const thumbWidth = getThumbWidth();
-  const currentScroll = thumbs.scrollLeft;
+  function scrollToThumb(direction) {
+    const thumbWidth = getThumbWidth();
+    const currentScroll = thumbs.scrollLeft;
 
-  // Calcula qual o índice atual de thumb visível
-  const currentIndex = Math.round(currentScroll / thumbWidth);
+    const currentIndex = Math.round(currentScroll / thumbWidth);
+    const newIndex = direction === 'right' ? currentIndex + 1 : currentIndex - 1;
+    const newScrollPosition = newIndex * thumbWidth;
 
-  const newIndex = direction === 'right'
-    ? currentIndex + 1
-    : currentIndex - 1;
+    thumbs.scrollTo({ left: newScrollPosition, behavior: 'smooth' });
+  }
 
-  const newScrollPosition = newIndex * thumbWidth;
+  leftBtn.addEventListener('click', () => scrollToThumb('left'));
+  rightBtn.addEventListener('click', () => scrollToThumb('right'));
+});
 
-  thumbs.scrollTo({ left: newScrollPosition, behavior: 'smooth' });
-}
-
-leftBtn.addEventListener('click', () => scrollToThumb('left'));
-rightBtn.addEventListener('click', () => scrollToThumb('right'));
