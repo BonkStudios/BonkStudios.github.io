@@ -27,6 +27,15 @@ body {
   z-index: 100;
 }
 
+.hamburger {
+  display: none;
+  font-size: 2rem;
+  background: none;
+  border: none;
+  color: white;
+  cursor: pointer;
+}
+
 .logo a {
   color: #ffb421;
   font-size: 1.8em;
@@ -145,13 +154,15 @@ body {
   position: relative;
   display: flex;
   align-items: center;
-  width: 400px;
+  width: 100%;
   height: 200px;
   border: none;
   outline: 4px solid transparent;
   border-radius: 20px;
+  background-repeat: no-repeat;
   background-size: cover;
-  background-position: center;
+  background-position: left center;
+  padding-left: 200px;
   cursor: pointer;
   transition: all 0.4s ease;
   text-decoration: none;
@@ -165,10 +176,9 @@ body {
   top: 50%;
   transform: translateY(-50%); /* centraliza verticalmente */
   font-family: 'Luckiest Guy', cursive;
-  font-size: 3rem;
+  font-size: clamp(1rem, 3vw, 3rem);
   line-height: 1;
-  white-space: normal;
-  text-shadow: 
+  text-shadow:
     -2px -2px 0 #ffb421,  
      2px -2px 0 #ffb421,
     -2px  2px 0 #ffb421,
@@ -270,4 +280,129 @@ footer {
   text-align: center;
   font-size: 0.9em;
   color: #aaa;
+}
+
+/* Tablets e telas médias */
+@media (max-width: 900px) {
+  /* Header */
+  .main-header {
+    flex-wrap: wrap;
+    padding: 15px 20px;
+  }
+
+  .nav-links {
+    gap: 15px;
+  }
+
+  /* Banner */
+  .banner-carousel {
+    height: 300px;
+  }
+
+  .banner-info h1 {
+    font-size: 2em;
+  }
+
+  /* Channel Buttons */
+  .channel-btn {
+    aspect-ratio: 1 / 1;
+    width: 100%;
+  }
+
+  /* Conteúdo */
+  .thumb {
+    width: 300px;
+    height: 170px;
+  }
+}
+
+/* Tablet */
+@media (max-width: 768px) {
+  /* Mostra o hamburger */
+  .hamburger {
+    display: block;
+  }
+
+  /* Esconde o menu por padrão no mobile */
+  .nav-links {
+    display: none;
+    flex-direction: column;
+    gap: 15px;
+    background: #111;
+    padding: 20px;
+    position: absolute;
+    top: 70px; /* altura do header */
+    left: 0;
+    width: 100%;
+    z-index: 99;
+  }
+
+  /* Menu aberto */
+  .nav-links.active {
+    display: flex;
+  }
+}
+
+/* Mobile */
+@media (max-width: 600px) {
+  /* Mostra o hamburger */
+  .hamburger {
+    display: block;
+  }
+
+  /* Esconde o menu por padrão no mobile */
+  .nav-links {
+    display: none;
+    flex-direction: column;
+    gap: 15px;
+    background: #111;
+    padding: 20px;
+    position: absolute;
+    top: 70px; /* altura do header */
+    left: 0;
+    width: 100%;
+    z-index: 99;
+  }
+
+  /* Menu aberto */
+  .nav-links.active {
+    display: flex;
+  }
+
+  /* Header ajustado no mobile */
+  .main-header {
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  /* Banner menor */
+  .banner-carousel {
+    height: 200px;
+  }
+
+  .banner-info h1 {
+    font-size: 1.5em;
+  }
+
+  /* Botões ocupando largura total */
+  .channel-buttons {
+    flex-direction: column;
+  }
+
+  /* Conteúdo */
+  .content-section {
+    padding: 20px 10px;
+  }
+
+  .thumb {
+    width: 90%;
+    height: auto;
+  }
+
+  /* Footer */
+  footer {
+    font-size: 0.8em;
+    padding: 15px;
+  }
 }

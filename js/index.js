@@ -3,6 +3,13 @@ const slides = document.querySelectorAll('.banner-slide');
 const dots = document.querySelectorAll('.dot');
 let currentSlide = 0;
 
+const hamburger = document.querySelector('.hamburger');
+const navLinks = document.querySelector('.nav-links');
+
+hamburger.addEventListener('click', () => {
+  navLinks.classList.toggle('active');
+});
+
 function showSlide(index) {
   slides.forEach((slide, i) => {
     slide.classList.toggle('active', i === index);
