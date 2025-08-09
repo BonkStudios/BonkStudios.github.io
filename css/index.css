@@ -161,12 +161,12 @@ body {
 
 .channel-btn-text {
   position: absolute;
-  left: 58%; /* aproximar mais do pug */
+  left: 58%;
   top: 50%;
   transform: translateY(-50%); /* centraliza verticalmente */
   font-family: 'Luckiest Guy', cursive;
   font-size: 3rem;
-  line-height: 1; /* texto mais junto */
+  line-height: 1;
   white-space: normal;
   text-shadow: 
     -2px -2px 0 #ffb421,  
@@ -176,16 +176,14 @@ body {
   transition: transform 0.3s ease, text-shadow 0.3s ease;
 }
 
-/* Hover com brilho e leve aumento */
 .channel-btn:hover {
   transform: translateY(-4px);
   box-shadow: 0 8px 20px rgba(0,0,0,0.4);
-  outline-color: rgba(255, 255, 255, 0.6);
+  outline-color: #ffb421;
 }
 
-/* Efeito no texto quando passa o mouse */
 .channel-btn:hover .channel-btn-text {
-  transform: translateY(-50%) scale(1.1); /* cresce um pouco */
+  transform: translateY(-50%) scale(1.1);
   text-shadow: 
     0 0 10px #ffb421,
     0 0 20px #ffb421,
