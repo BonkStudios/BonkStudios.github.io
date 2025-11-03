@@ -16,7 +16,7 @@ body {
 }
 
 /* Header */
-.main-header {
+.navbar {
   background-color: #111;
   padding: 20px 40px;
   display: flex;
