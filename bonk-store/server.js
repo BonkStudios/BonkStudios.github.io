@@ -9,7 +9,7 @@ const crypto = require('crypto');
 const JWT_SECRET = process.env.JWT_SECRET;
 
 const app = express();
-app.use(express.static('public'));
+app.use(express.static('public', { extensions: ['html', 'htm'] }));
 app.use(cors());
 app.use(express.json());
 
@@ -998,8 +998,8 @@ app.post('/api/auth/forgot-password', async (req, res) => {
             [token, expireDate, userId]
         );
 
-        // 5. "ENVIA EMAIL" (Modo Desenvolvimento: Mostra no terminal)
-        const resetLink = `http://localhost:3000/reset-password.html?token=${token}`;
+        // 5. "ENVIA EMAIL"
+        const resetLink = `${process.env.BASE_URL}reset-password.html?token=${token}`;
         
         console.log('================================================');
         console.log('🔗 LINK DE RECUPERAÇÃO (SIMULAÇÃO DE EMAIL):');
@@ -1202,7 +1202,7 @@ app.post('/api/orders', authenticateToken, async (req, res) => {
     }
 });
 
-const PORT = 3000;
+const PORT = process.env.PORT || 3000;
 app.listen(PORT, () => {
-    console.log(`🚀 Servidor a correr em http://localhost:${PORT}`);
+    console.log(`🚀 Servidor a correr na porta ${PORT}`);
 });
