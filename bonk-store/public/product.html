@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="pt-pt" data-bs-theme="dark">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <meta name="description" content="Detalhes do Produto - Bonk Store">
+        <title>Detalhes do Produto | Bonk Store</title>
+
+        <link rel="icon" type="image/x-icon" href="/bonk-store/images/bonk_studios_favicon.ico">
+        
+        <style>
+            body {
+                opacity: 0;
+                transition: opacity 0.5s ease-in-out;
+                visibility: hidden;
+            }
+            body.loaded {
+                opacity: 1;
+                visibility: visible;
+            }
+            /* Pequena animação para o botão de sucesso */
+            .btn-success { transition: all 0.3s ease; }
+        </style>
+      <script type="module" crossorigin src="/assets/product-BoRRmAFl.js"></script>
+      <link rel="modulepreload" crossorigin href="/assets/main-Dk0hW8cW.js">
+      <link rel="stylesheet" crossorigin href="/assets/main-CY15mJuJ.css">
+    </head>
+
+    <body class="d-flex flex-column min-vh-100">
+        
+        <nav class="navbar navbar-expand-lg bg-body-tertiary navbar-dark sticky-top">
+            <div class="container-fluid">
+                <a class="navbar-brand logo" href="index.html">Bonk Store</a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarBonkStore">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarBonkStore">
+                    <ul class="navbar-nav ms-auto mb-2 mb-lg-0 gap-3 align-items-center">
+                        <li class="nav-item"><a class="nav-link" href="index.html">Loja</a></li>
+                        <li class="nav-item"><a class="nav-link" href="collections.html">Coleções</a></li>
+                        <li class="nav-item"><a class="nav-link" href="http://localhost:5500/">Bonk Studios</a></li>
+
+                        <li class="nav-item">
+                            <a href="cart.html" class="btn btn-primary position-relative">
+                                🛒 <span class="d-lg-none ms-2">Carrinho</span>
+                                <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger" id="cart-badge">0</span>
+                            </a>
+                        </li>
+
+                        <li class="nav-item ms-lg-2" id="user-menu-container"></li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+
+        <div class="container flex-grow-1 mt-4">
+            <div id="loading-message" class="text-center py-5">
+                <div class="spinner-border text-primary" role="status"></div>
+                <p class="mt-2">A carregar detalhes...</p>
+            </div>
+
+            <div id="product-content" class="row d-none">
+                <div class="col-md-6 mb-4">
+                    <div class="p-3 rounded bg-body-tertiary shadow-sm">
+                        <img id="p-image" src="" class="img-fluid w-100 rounded" alt="Produto">
+                    </div>
+                </div>
+
+                <div class="col-md-6">
+                    <nav aria-label="breadcrumb">
+                        <ol class="breadcrumb">
+                            <li class="breadcrumb-item"><a href="index.html" class="text-decoration-none">Loja</a></li>
+                            <li class="breadcrumb-item active text-primary" aria-current="page" id="p-category">Categoria</li>
+                        </ol>
+                    </nav>
+
+                    <h1 id="p-name" class="display-5 fw-bold mb-3 text-light">Nome do Produto</h1>
+                    <h2 id="p-price" class="text-primary mb-4 fw-bold">R$ 0,00</h2>
+                    <p id="p-description" class="lead fs-6 mb-4 text-secondary">Descrição do produto...</p>
+                    <hr class="border-secondary">
+
+                    <form id="add-to-cart-form">
+                        <div class="mb-4">
+                            <label class="form-label fw-bold">Cor: <span id="selected-color-name" class="fw-normal text-muted">Selecione</span></label>
+                            <div id="color-options" class="d-flex gap-2"></div>
+                        </div>
+
+                        <div class="mb-4">
+                            <label class="form-label fw-bold">Tamanho:</label>
+                            <div id="size-options" class="d-flex flex-wrap gap-2">
+                                <span class="text-muted small">Selecione uma cor primeiro</span>
+                            </div>
+                        </div>
+
+                        <div class="mb-4">
+                            <label class="form-label fw-bold">Quantidade</label>
+                            <div class="input-group" style="width: 140px;">
+                                <button class="btn btn-outline-secondary" type="button" id="btn-minus">-</button>
+                                <input type="text" class="form-control text-center border-secondary" id="qty-input" value="1" readonly>
+                                <button class="btn btn-outline-secondary" type="button" id="btn-plus">+</button>
+                            </div>
+                        </div>
+
+                        <div class="d-grid gap-2 mt-4">
+                            <button type="submit" id="btn-add" class="btn btn-primary btn-lg py-3 rounded-pill" disabled>
+                                ADICIONAR AO CARRINHO
+                            </button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+
+        <footer class="bonk-footer pt-5 pb-3">
+            <div class="container">
+                <div class="row g-4">
+                    <div class="col-lg-4 col-md-6">
+                        <a class="navbar-brand logo fs-3 mb-3 d-block" href="index.html">Bonk Store</a>
+                        <p class="text-secondary">
+                            Design exclusivo, qualidade premium e envio rápido para todo o país.
+                        </p>
+                        <div class="social-icons mt-4">
+                            <a href="https://www.youtube.com/@BonkShow" class="me-3" title="Youtube"><i class="bi bi-youtube fs-4"></i></a>
+                            <a href="https://www.instagram.com/bonk_studios" class="me-3" title="Instagram"><i class="bi bi-instagram fs-4"></i></a>
+                            <a href="https://x.com/Bonk_Studios" class="me-3" title="Twitter / X"><i class="bi bi-twitter-x fs-4"></i></a>
+                            <a href="https://www.tiktok.com/@bonkstudios_br" class="me-3" title="TikTok"><i class="bi bi-tiktok fs-4"></i></a>
+                            <a href="https://discord.com/invite/3fTVZMQe3c" class="me-3" title="Discord"><i class="bi bi-discord fs-4"></i></a>
+                        </div>
+                    </div>
+
+                    <div class="col-lg-2 col-md-3 col-6">
+                        <h5 class="text-white fw-bold mb-3">Loja</h5>
+                        <ul class="list-unstyled">
+                            <li class="mb-2"><a href="index.html">Novidades</a></li>
+                            <li class="mb-2"><a href="collections.html">Coleções</a></li>
+                        </ul>
+                    </div>
+
+                    <div class="col-lg-2 col-md-3 col-6">
+                        <h5 class="text-white fw-bold mb-3">Ajuda</h5>
+                        <ul class="list-unstyled">
+                            <li class="mb-2"><a href="index.html">Envios e Entregas</a></li>
+                            <li class="mb-2"><a href="index.html">Trocas e Devoluções</a></li>
+                            <li class="mb-2"><a href="index.html">Guia de Tamanhos</a></li>
+                            <li class="mb-2"><a href="index.html">Perguntas Frequentes</a></li>
+                            <li class="mb-2"><a href="index.html">Livro de Reclamações</a></li>
+                        </ul>
+                    </div>
+
+                    <div class="col-lg-4 col-md-12">
+                        <h5 class="text-white fw-bold mb-3">Fica a par das novidades</h5>
+                        <p class="text-secondary small">Subscreve para receberes descontos exclusivos e saberes dos drops antes de toda a gente.</p>
+                        
+                        <form class="mt-3">
+                            <div class="input-group mb-3">
+                                <input type="email" class="form-control bg-dark text-white border-secondary" placeholder="O seu email..." aria-label="Email">
+                                <button class="btn btn-primary fw-bold" type="button">SUBSCREVER</button>
+                            </div>
+                        </form>
+                        
+                        <p class="text-secondary small mt-3">
+                            <i class="bi bi-envelope-fill me-2 text-primary"></i> contact@bonkstudios.store
+                        </p>
+                    </div>
+                </div>
+
+                <hr class="border-secondary my-4">
+
+                <div class="row align-items-center">
+                    <div class="col-md-6 text-center text-md-start">
+                        <p class="text-secondary small mb-0">&copy; 2025 Bonk Studios. Todos os direitos reservados.</p>
+                        <div class="mt-1">
+                            <a href="index.html" class="text-secondary small me-3 text-decoration-none">Termos e Condições</a>
+                            <a href="index.html" class="text-secondary small text-decoration-none">Política de Privacidade</a>
+                        </div>
+                    </div>
+                    <div class="col-md-6 text-center text-md-end mt-3 mt-md-0">
+                        <i class="bi bi-credit-card-2-front fs-4 text-secondary me-2" title="Visa/Mastercard"></i>
+                        <i class="bi bi-paypal fs-4 text-secondary me-2" title="PayPal"></i>
+                        <i class="bi bi-phone fs-4 text-secondary" title="Pix"></i>
+                    </div>
+                </div>
+            </div>
+        </footer>
+
+    </body>
+</html>

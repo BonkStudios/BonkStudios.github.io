@@ -1,0 +1,367 @@
+<!DOCTYPE html>
+<html lang="pt-pt" data-bs-theme="dark">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Backoffice | Bonk Store</title>
+        <link rel="icon" type="image/x-icon" href="/bonk-store/images/bonk_studios_favicon.ico">
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+        <style>
+            body { opacity: 0; transition: opacity 0.5s; }
+            body.loaded { opacity: 1; }
+        </style>
+      <script type="module" crossorigin src="/assets/admin-CWSV6hh5.js"></script>
+      <link rel="modulepreload" crossorigin href="/assets/main-Dk0hW8cW.js">
+      <link rel="stylesheet" crossorigin href="/assets/main-CY15mJuJ.css">
+    </head>
+    <body class="bg-dark text-white">
+
+        <div class="sidebar d-flex flex-column p-3">
+            <a href="admin.html" class="d-flex align-items-center mb-4 text-decoration-none text-white">
+                <span class="fs-4 fw-bold text-warning"><i class="bi bi-shield-lock-fill me-2"></i>ADMIN</span>
+            </a>
+            
+            <ul class="nav nav-pills flex-column mb-auto">
+                <li class="nav-item">
+                    <a class="nav-link active" onclick="switchTab('orders')"><i class="bi bi-box-seam me-2"></i> Encomendas</a>
+                </li>
+                <li class="nav-item admin-only d-none">
+                    <a class="nav-link" onclick="switchTab('products')"><i class="bi bi-tag me-2"></i> Produtos</a>
+                </li>
+                <li class="nav-item admin-only d-none">
+                    <a class="nav-link" onclick="switchTab('categories')"><i class="bi bi-list-ul me-2"></i> Categorias</a>
+                </li>
+                <li class="nav-item admin-only d-none">
+                    <a class="nav-link" onclick="switchTab('collections')"><i class="bi bi-collection-play me-2"></i> Coleções</a>
+                </li>
+            </ul>
+
+            <div class="mt-auto pt-3 border-top border-secondary">
+                <div class="d-flex align-items-center justify-content-between px-2">
+                    <div class="small">
+                        <strong class="d-block text-white" id="admin-name">User</strong>
+                        <span class="text-secondary" style="font-size: 0.8rem;" id="admin-role">Staff</span>
+                    </div>
+                    <button id="btn-logout" class="btn btn-sm btn-outline-danger"><i class="bi bi-box-arrow-right"></i></button>
+                </div>
+                <a href="index.html" class="btn btn-sm btn-outline-secondary w-100 mt-3">Ir para Loja</a>
+            </div>
+        </div>
+
+        <div class="main-content">
+            
+            <div id="view-orders" class="view-section">
+                <h2 class="mb-4 fw-bold">Gestão de Encomendas</h2>
+                <div class="card bg-dark border-secondary">
+                    <div class="table-responsive">
+                        <table class="table table-dark table-hover mb-0 align-middle">
+                            <thead class="table-secondary">
+                                <tr><th>ID</th><th>Data</th><th>Cliente</th><th>Total</th><th>Estado</th><th class="text-end">Ações</th></tr>
+                            </thead>
+                            <tbody id="orders-table-body"></tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+
+            <div id="view-products" class="view-section d-none">
+                <div class="d-flex justify-content-between align-items-center mb-4">
+                    <h2 class="fw-bold m-0">Produtos</h2>
+                    <button class="btn btn-primary fw-bold" data-bs-toggle="modal" data-bs-target="#addProductModal">
+                        <i class="bi bi-plus-lg me-2"></i>Novo Produto
+                    </button>
+                </div>
+                <div id="products-list-container" class="row g-3"></div>
+            </div>
+
+            <div id="view-categories" class="view-section d-none">
+                <h2 class="fw-bold mb-4">Categorias (Tipos de Produtos)</h2>
+                <ul class="list-group bg-dark" id="categories-list"></ul>
+            </div>
+
+            <div id="view-collections" class="view-section d-none">
+                <div class="d-flex justify-content-between align-items-center mb-4">
+                    <h2 class="fw-bold m-0">Coleções (Temas)</h2>
+                    <button class="btn btn-primary fw-bold" data-bs-toggle="modal" data-bs-target="#addCollectionModal">
+                        <i class="bi bi-plus-lg me-2"></i>Nova Coleção
+                    </button>
+                </div>
+                <ul class="list-group bg-dark" id="collections-list"></ul>
+            </div>
+        </div>
+
+        <div class="modal fade" id="orderDetailModal" tabindex="-1" aria-hidden="true">
+            <div class="modal-dialog modal-lg modal-dialog-centered">
+                <div class="modal-content bg-dark text-white border-secondary">
+                    <div class="modal-header border-secondary">
+                        <h5 class="modal-title fw-bold text-primary">
+                            <i class="bi bi-box-seam me-2"></i>Encomenda #<span id="modal-order-id"></span>
+                        </h5>
+                        <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal"></button>
+                    </div>
+                    <div class="modal-body">
+                        <div class="row mb-4 g-3">
+                            <div class="col-md-6">
+                                <div class="p-3 border border-secondary rounded bg-black bg-opacity-25 h-100">
+                                    <h6 class="text-secondary text-uppercase small fw-bold mb-2">Cliente</h6>
+                                    <p class="mb-1 fw-bold fs-5" id="modal-client-name">-</p>
+                                    <p class="mb-1 text-secondary" id="modal-client-email">-</p>
+                                    <p class="mb-0 text-secondary small font-monospace" id="modal-client-tax">-</p>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="p-3 border border-secondary rounded bg-black bg-opacity-25 h-100">
+                                    <h6 class="text-secondary text-uppercase small fw-bold mb-2">Envio para</h6>
+                                    <p class="mb-1 small" id="modal-address">-</p>
+                                    <p class="mb-0 small text-primary fw-bold" id="modal-phone">-</p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <h6 class="text-secondary text-uppercase small fw-bold mb-3">Itens</h6>
+                        <div class="table-responsive mb-3 border border-secondary rounded">
+                            <table class="table table-dark table-striped mb-0 align-middle">
+                                <tbody id="modal-items-list"></tbody>
+                            </table>
+                        </div>
+
+                        <div class="d-flex justify-content-end border-top border-secondary pt-3">
+                            <div class="text-end" style="min-width: 200px;">
+                                <div class="d-flex justify-content-between mb-1">
+                                    <span class="text-secondary small">Envio:</span>
+                                    <span class="fw-bold" id="modal-shipping-cost"></span>
+                                </div>
+                                <div class="d-flex justify-content-between mb-2">
+                                    <span class="text-secondary small">Operações:</span>
+                                    <span class="fw-bold">R$ 10,00</span>
+                                </div>
+                                <div class="d-flex justify-content-between border-top border-secondary pt-2">
+                                    <span class="text-primary fw-bold">TOTAL:</span>
+                                    <span class="fs-4 fw-bold text-white" id="modal-total"></span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="modal-footer border-secondary">
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Fechar</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="modal fade" id="addCollectionModal" tabindex="-1" aria-hidden="true">
+            <div class="modal-dialog modal-sm modal-dialog-centered">
+                <div class="modal-content bg-dark border-secondary text-white">
+                    <div class="modal-header border-secondary">
+                        <h5 class="modal-title">Nova Coleção</h5>
+                        <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal"></button>
+                    </div>
+                    <div class="modal-body">
+                        <form id="form-add-collection">
+                            <div class="mb-3">
+                                <label class="form-label">Nome da Coleção</label>
+                                <input type="text" id="new-col-name" class="form-control" required>
+                            </div>
+                            <button type="submit" class="btn btn-primary w-100">Guardar</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="modal fade" id="orderDetailModal" tabindex="-1" aria-hidden="true">
+            <div class="modal-dialog modal-lg modal-dialog-centered">
+                <div class="modal-content bg-dark text-white border-secondary">
+                    <div class="modal-header border-secondary">
+                        <h5 class="modal-title">Encomenda #<span id="modal-order-id"></span></h5>
+                        <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal"></button>
+                    </div>
+                    <div class="modal-body">
+                        <div class="row mb-3">
+                            <div class="col-6">
+                                <h6 class="text-secondary small">Cliente</h6>
+                                <p class="mb-0 fw-bold" id="modal-client-name"></p>
+                                <p class="small text-secondary" id="modal-client-email"></p>
+                            </div>
+                            <div class="col-6 text-end">
+                                <h6 class="text-secondary small">Total</h6>
+                                <p class="fs-4 fw-bold text-primary mb-0" id="modal-total"></p>
+                            </div>
+                        </div>
+                        <div class="table-responsive">
+                            <table class="table table-dark table-sm align-middle">
+                                <tbody id="modal-items-list"></tbody>
+                            </table>
+                        </div>
+                    </div>
+                    <div class="modal-footer border-secondary">
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Fechar</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="modal fade" id="editProductModal" tabindex="-1" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content bg-dark border-secondary text-white">
+                    <div class="modal-header border-secondary">
+                        <h5 class="modal-title">Editar Produto</h5>
+                        <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal"></button>
+                    </div>
+                    <div class="modal-body">
+                        <form id="form-edit-product">
+                            <input type="hidden" id="edit-prod-id">
+                            <div class="row g-2 mb-3">
+                                <div class="col-4">
+                                    <label class="form-label">Referência</label>
+                                    <input type="text" id="edit-prod-ref" class="form-control font-monospace" required>
+                                </div>
+                                <div class="col-8">
+                                    <label class="form-label">Nome</label>
+                                    <input type="text" id="edit-prod-name" class="form-control" required>
+                                </div>
+                            </div>
+                            <div class="mb-3">
+                                <label class="form-label">Preço (R$)</label>
+                                <input type="number" step="0.01" id="edit-prod-price" class="form-control" min="0.00" required>
+                            </div>
+                            
+                            <div class="row g-2 mb-3">
+                                <div class="col-6">
+                                    <label class="form-label">Categoria</label>
+                                    <select id="edit-prod-cat" class="form-select bg-dark text-white" required></select>
+                                </div>
+                                <div class="col-6">
+                                    <label class="form-label">Coleção</label>
+                                    <select id="edit-prod-collection" class="form-select bg-dark text-white"></select>
+                                </div>
+                            </div>
+
+                            <div class="mb-3">
+                                <label class="form-label">Imagem URL</label>
+                                <input type="text" id="edit-prod-img" class="form-control">
+                            </div>
+                            <div class="mb-3">
+                                <label class="form-label">Descrição</label>
+                                <textarea id="edit-prod-desc" class="form-control" rows="3"></textarea>
+                            </div>
+
+                            <hr class="border-secondary my-4">
+                            <h5 class="fw-bold mb-3 text-white"><i class="bi bi-boxes me-2"></i>Gestão de Stock & Variantes</h5>
+
+                            <div class="table-responsive mb-3 border border-secondary rounded" style="max-height: 200px; overflow-y: auto;">
+                                <table class="table table-dark table-sm table-hover mb-0 align-middle">
+                                    <thead>
+                                        <tr class="text-secondary small">
+                                            <th>Cor</th>
+                                            <th>Tam</th>
+                                            <th style="width: 100px;">Qtd</th>
+                                            <th></th>
+                                        </tr>
+                                    </thead>
+                                    <tbody id="edit-stock-list">
+                                        </tbody>
+                                </table>
+                            </div>
+
+                            <div class="p-3 bg-black border border-secondary rounded mb-3">
+                                <h6 class="small text-secondary fw-bold text-uppercase mb-2">Adicionar / Atualizar Variante</h6>
+                                <div class="row g-2 align-items-end">
+                                    <div class="col-4">
+                                        <label class="form-label small mb-1">Cor</label>
+                                        <select id="stock-add-color" class="form-select form-select-sm bg-dark text-white border-secondary"></select>
+                                    </div>
+                                    <div class="col-3">
+                                        <label class="form-label small mb-1">Tamanho</label>
+                                        <select id="stock-add-size" class="form-select form-select-sm bg-dark text-white border-secondary">
+                                            </select>
+                                    </div>
+                                    <div class="col-3">
+                                        <label class="form-label small mb-1">Qtd</label>
+                                        <input type="number" id="stock-add-qty" class="form-control form-control-sm bg-dark text-white border-secondary" value="10" min="0">
+                                    </div>
+                                    <div class="col-2">
+                                        <button type="button" class="btn btn-sm btn-primary w-100 fw-bold" onclick="addStockVariant()">
+                                            <i class="bi bi-plus-lg"></i>
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="text-end">
+                                <button type="submit" class="btn btn-primary fw-bold">Guardar Alterações</button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="modal fade" id="addProductModal" tabindex="-1" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content bg-dark border-secondary text-white">
+                    <div class="modal-header border-secondary">
+                        <h5 class="modal-title">Novo Produto</h5>
+                        <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal"></button>
+                    </div>
+                    <div class="modal-body">
+                        <form id="form-add-product">
+                            <div class="row g-2 mb-3">
+                                <div class="col-4">
+                                    <label class="form-label">Referência (SKU)</label>
+                                    <input type="text" id="new-prod-ref" class="form-control font-monospace" placeholder="NAME-CATEGORY" required>
+                                </div>
+                                <div class="col-8">
+                                    <label class="form-label">Nome</label>
+                                    <input type="text" id="new-prod-name" class="form-control" required>
+                                </div>
+                            </div>
+                            <div class="mb-3">
+                                <label class="form-label">Preço (R$)</label>
+                                <input type="number" step="0.01" id="new-prod-price" class="form-control" required>
+                            </div>
+                            
+                            <div class="row g-2 mb-3">
+                                <div class="col-6">
+                                    <label class="form-label">Categoria</label>
+                                    <select id="new-prod-cat" class="form-select bg-dark text-white" required>
+                                        <option value="" disabled selected>A carregar...</option>
+                                    </select>
+                                </div>
+                                <div class="col-6">
+                                    <label class="form-label">Coleção</label>
+                                    <select id="new-prod-collection" class="form-select bg-dark text-white">
+                                        <option value="" selected>Nenhuma</option>
+                                    </select>
+                                </div>
+                            </div>
+
+                            <div class="mb-3">
+                                <label class="form-label">Imagem URL</label>
+                                <input type="text" id="new-prod-img" class="form-control">
+                            </div>
+                            <div class="mb-3">
+                                <label class="form-label">Descrição</label>
+                                <textarea id="new-prod-desc" class="form-control" rows="3"></textarea>
+                            </div>
+
+                            <div class="alert alert-secondary small d-flex align-items-center">
+                                <i class="bi bi-info-circle fs-5 me-2"></i>
+                                <div>
+                                    A gestão de cores, tamanhos e stock ficará disponível <strong>imediatamente</strong> após criar o produto.
+                                </div>
+                            </div>
+
+                            <div class="text-end">
+                                <button type="submit" class="btn btn-primary fw-bold">Criar & Configurar Stock <i class="bi bi-arrow-right ms-1"></i></button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div id="toast-container" style="position: fixed; top: 20px; right: 20px; z-index: 1060;"></div>
+
+    </body>
+</html>

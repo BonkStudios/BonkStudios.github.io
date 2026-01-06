@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html lang="pt-pt" data-bs-theme="dark">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <meta name="description" content="Carrinho de Compras | Loja oficial da Bonk Studios!">
+        <title>Carrinho de Compras | Bonk Store</title>
+
+        <link rel="icon" type="image/x-icon" href="/bonk-store/images/bonk_studios_favicon.ico">
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+        
+        <style>
+            body {
+                opacity: 0;
+                transition: opacity 0.5s ease-in-out;
+                visibility: hidden;
+            }
+            body.loaded {
+                opacity: 1;
+                visibility: visible;
+            }
+            .cart-img {
+                width: 80px;
+                height: 80px;
+                object-fit: cover;
+                border-radius: 8px;
+            }
+        </style>
+      <script type="module" crossorigin src="/assets/cart-Cz_01WYh.js"></script>
+      <link rel="modulepreload" crossorigin href="/assets/main-Dk0hW8cW.js">
+      <link rel="stylesheet" crossorigin href="/assets/main-CY15mJuJ.css">
+    </head>
+    <body class="d-flex flex-column min-vh-100">
+
+        <nav class="navbar navbar-expand-lg bg-body-tertiary navbar-dark sticky-top">
+            <div class="container-fluid">
+                <a class="navbar-brand logo" href="index.html">Bonk Store</a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarBonkStore">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarBonkStore">
+                    <ul class="navbar-nav ms-auto mb-2 mb-lg-0 gap-3 align-items-center">
+                        <li class="nav-item"><a class="nav-link" href="index.html">Loja</a></li>
+                        <li class="nav-item"><a class="nav-link" href="collections.html">Coleções</a></li>
+                        <li class="nav-item"><a class="nav-link" href="https://www.bonkstudios.com.br/">Bonk Studios</a></li>
+
+                        <li class="nav-item">
+                            <a href="cart.html" class="btn btn-primary position-relative">
+                                🛒 <span class="d-lg-none ms-2">Carrinho</span>
+                                <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger" id="cart-badge">0</span>
+                            </a>
+                        </li>
+
+                        <li class="nav-item ms-lg-2" id="user-menu-container"></li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+
+        <div class="container py-5 flex-grow-1">
+            <h2 class="fw-bold mb-4 text-primary"><i class="bi bi-cart3 me-2"></i>O Meu Carrinho</h2>
+
+            <div id="empty-cart-msg" class="text-center py-5 d-none">
+                <i class="bi bi-basket display-1 text-secondary"></i>
+                <h4 class="mt-4 text-white">O teu carrinho está vazio.</h4>
+                <p class="text-secondary">Vê as nossas coleções e encontra algo que gostes!</p>
+                <a href="index.html" class="btn btn-outline-primary mt-3">Voltar à Loja</a>
+            </div>
+
+            <div id="cart-content" class="row g-4 d-none">
+                <div class="col-lg-8">
+                    <div class="card border-0 bg-dark shadow-sm">
+                        <div class="card-body p-0">
+                            <div class="table-responsive">
+                                <table class="table table-dark table-hover align-middle mb-0">
+                                    <thead class="text-secondary small text-uppercase">
+                                        <tr>
+                                            <th scope="col" class="ps-4 py-3">Produto</th>
+                                            <th scope="col" class="py-3">Preço</th>
+                                            <th scope="col" class="py-3">Qtd</th>
+                                            <th scope="col" class="py-3 text-end pe-4">Total</th>
+                                            <th scope="col"></th>
+                                        </tr>
+                                    </thead>
+                                    <tbody id="cart-items-container">
+                                        </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-lg-4">
+                    <div class="card border-primary mb-3">
+                        <div class="card-header bg-transparent border-primary py-3">
+                            <h5 class="m-0 fw-bold text-white">Resumo</h5>
+                        </div>
+                        <div class="card-body">
+                            <div class="d-flex justify-content-between mb-2">
+                                <span class="text-secondary">Subtotal</span>
+                                <span class="text-white fw-bold" id="cart-subtotal">R$ 0,00</span>
+                            </div>
+                            <div class="d-flex justify-content-between mb-3">
+                                <span class="text-secondary">Envio</span>
+                                <span class="text-secondary small">Calculado no checkout</span>
+                            </div>
+                            <hr class="border-secondary">
+                            <div class="d-flex justify-content-between mb-4">
+                                <span class="fs-5 fw-bold text-white">Total</span>
+                                <span class="fs-4 fw-bold text-primary" id="cart-total">R$ 0,00</span>
+                            </div>
+                            <button id="btn-checkout" class="btn btn-primary w-100 fw-bold py-2">
+                                FINALIZAR COMPRA <i class="bi bi-arrow-right ms-2"></i>
+                            </button>
+                            <div class="text-center mt-3">
+                                <img src="https://upload.wikimedia.org/wikipedia/commons/b/b5/PayPal.svg" height="20" class="opacity-50 mx-1">
+                                <img src="https://upload.wikimedia.org/wikipedia/commons/0/04/Visa.svg" height="20" class="opacity-50 mx-1 bg-white rounded px-1">
+                                <img src="https://upload.wikimedia.org/wikipedia/commons/2/2a/Mastercard-logo.svg" height="20" class="opacity-50 mx-1 bg-white rounded px-1">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <footer class="bonk-footer pt-5 pb-3">
+            <div class="container">
+                <div class="row g-4">
+                    <div class="col-lg-4 col-md-6">
+                        <a class="navbar-brand logo fs-3 mb-3 d-block" href="index.html">Bonk Store</a>
+                        <p class="text-secondary">
+                            Design exclusivo, qualidade premium e envio rápido para todo o país.
+                        </p>
+                        <div class="social-icons mt-4">
+                            <a href="https://www.youtube.com/@BonkShow" class="me-3" title="Youtube"><i class="bi bi-youtube fs-4"></i></a>
+                            <a href="https://www.instagram.com/bonk_studios" class="me-3" title="Instagram"><i class="bi bi-instagram fs-4"></i></a>
+                            <a href="https://x.com/Bonk_Studios" class="me-3" title="Twitter / X"><i class="bi bi-twitter-x fs-4"></i></a>
+                            <a href="https://www.tiktok.com/@bonkstudios_br" class="me-3" title="TikTok"><i class="bi bi-tiktok fs-4"></i></a>
+                            <a href="https://discord.com/invite/3fTVZMQe3c" class="me-3" title="Discord"><i class="bi bi-discord fs-4"></i></a>
+                        </div>
+                    </div>
+
+                    <div class="col-lg-2 col-md-3 col-6">
+                        <h5 class="text-white fw-bold mb-3">Loja</h5>
+                        <ul class="list-unstyled">
+                            <li class="mb-2"><a href="index.html">Novidades</a></li>
+                            <li class="mb-2"><a href="collections.html">Coleções</a></li>
+                        </ul>
+                    </div>
+
+                    <div class="col-lg-2 col-md-3 col-6">
+                        <h5 class="text-white fw-bold mb-3">Ajuda</h5>
+                        <ul class="list-unstyled">
+                            <li class="mb-2"><a href="index.html">Envios e Entregas</a></li>
+                            <li class="mb-2"><a href="index.html">Trocas e Devoluções</a></li>
+                            <li class="mb-2"><a href="index.html">Guia de Tamanhos</a></li>
+                            <li class="mb-2"><a href="index.html">Perguntas Frequentes</a></li>
+                            <li class="mb-2"><a href="index.html">Livro de Reclamações</a></li>
+                        </ul>
+                    </div>
+
+                    <div class="col-lg-4 col-md-12">
+                        <h5 class="text-white fw-bold mb-3">Fica a par das novidades</h5>
+                        <p class="text-secondary small">Subscreve para receberes descontos exclusivos e saberes dos drops antes de toda a gente.</p>
+                        
+                        <form class="mt-3">
+                            <div class="input-group mb-3">
+                                <input type="email" class="form-control bg-dark text-white border-secondary" placeholder="O seu email..." aria-label="Email">
+                                <button class="btn btn-primary fw-bold" type="button">SUBSCREVER</button>
+                            </div>
+                        </form>
+                        
+                        <p class="text-secondary small mt-3">
+                            <i class="bi bi-envelope-fill me-2 text-primary"></i> contact@bonkstudios.store
+                        </p>
+                    </div>
+                </div>
+
+                <hr class="border-secondary my-4">
+
+                <div class="row align-items-center">
+                    <div class="col-md-6 text-center text-md-start">
+                        <p class="text-secondary small mb-0">&copy; 2025 Bonk Studios. Todos os direitos reservados.</p>
+                        <div class="mt-1">
+                            <a href="index.html" class="text-secondary small me-3 text-decoration-none">Termos e Condições</a>
+                            <a href="index.html" class="text-secondary small text-decoration-none">Política de Privacidade</a>
+                        </div>
+                    </div>
+                    <div class="col-md-6 text-center text-md-end mt-3 mt-md-0">
+                        <i class="bi bi-credit-card-2-front fs-4 text-secondary me-2" title="Visa/Mastercard"></i>
+                        <i class="bi bi-paypal fs-4 text-secondary me-2" title="PayPal"></i>
+                        <i class="bi bi-phone fs-4 text-secondary" title="Pix"></i>
+                    </div>
+                </div>
+            </div>
+        </footer>
+
+        <div class="modal fade" id="deleteModal" tabindex="-1" aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title fw-bold text-danger"><i class="bi bi-exclamation-triangle-fill me-2"></i>Remover Item</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        Tens a certeza que queres remover este item do carrinho?
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
+                        <button type="button" class="btn btn-danger fw-bold" id="confirm-delete-btn">Remover</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div id="toast-container"></div>
+
+    </body>
+</html>
