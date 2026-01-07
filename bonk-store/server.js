@@ -480,6 +480,7 @@ app.get('/api/admin/products-list', authenticateToken, authorizeAdmin, async (re
             LEFT JOIN stock s ON p.id_prod = s.id_prod
             WHERE pr.end_date IS NULL
             GROUP BY p.id_prod, p.name, p.ref, p.description, p.image_url, pr.price, pr.status, c.name, p.id_cat, p.id_collection
+            ORDER BY p.id_prod ASC
         `);
         res.json(rows);
     } catch (error) {
