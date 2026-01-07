@@ -74,7 +74,7 @@ app.get('/api/admin/orders', authenticateToken, authorizeStaff, async (req, res)
             FROM orders o
             JOIN users u ON o.id_user = u.id_user
             LEFT JOIN order_items oi ON o.id_order = oi.id_order
-            GROUP BY o.id_order
+            GROUP BY o.id_order, o.total_amount, o.status, o.created_at, u.name, u.email
             ORDER BY o.created_at DESC
         `);
         res.json(orders);
