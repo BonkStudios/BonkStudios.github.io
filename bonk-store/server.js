@@ -1004,7 +1004,7 @@ app.post('/api/auth/forgot-password', async (req, res) => {
         );
 
         // 5. "ENVIA EMAIL"
-        const resetLink = `${process.env.BASE_URL}reset-password.html?token=${token}`;
+        const resetLink = `${process.env.BASE_URL}/reset-password.html?token=${token}`;
         
         console.log('================================================');
         console.log('🔗 LINK DE RECUPERAÇÃO (SIMULAÇÃO DE EMAIL):');
