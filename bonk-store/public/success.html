@@ -143,7 +143,8 @@
                 </div>
             </div>
         </footer>
- <script>
+
+ <script>
             // Script Simples para ler o ID do URL
             document.addEventListener('DOMContentLoaded', () => {
                 const params = new URLSearchParams(window.location.search);
@@ -151,7 +152,7 @@
                 
                 const display = document.getElementById('order-id-display');
                 if (orderId) {
-                    display.textContent = `#${orderId}`;
+                    display.textContent = `#BNK-${parseInt(orderId).toString(16).toUpperCase().padStart(4, '0')}`;
                 } else {
                     display.textContent = 'N/A';
                 }
