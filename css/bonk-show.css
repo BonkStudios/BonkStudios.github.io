@@ -10,40 +10,8 @@
   color: var(--show-accent);
 }
 
-.nav-logo-img {
-  height: 55px;
-  width: auto;
-}
-
-/* Hero Cinemático com gradiente escuro na base para fundir com o fundo */
-.hero-cinematic {
-  height: 65vh;
-  background-size: cover;
-  background-position: center top;
-  position: relative;
-  display: flex;
-  align-items: flex-end;
-  padding: 40px;
-}
-
-.hero-cinematic::before {
-  content: '';
-  position: absolute;
-  top: 0; left: 0; right: 0; bottom: 0;
-  background: linear-gradient(to top, #0d0d0d 5%, transparent 70%);
-}
-
-.hero-content {
-  position: relative;
-  z-index: 2;
-  max-width: 650px;
-}
-
-.hero-content h1 { color: var(--show-accent); font-size: 3.5em; line-height: 1; margin-bottom: 5px;}
-.hero-content h2 { font-size: 1.5em; color: #fff; margin-bottom: 15px;}
-.hero-content p { margin-bottom: 20px; font-size: 1.1em; color: #ccc;}
-
 .btn-assistir {
+  display: inline-block;
   background: var(--show-accent);
   color: #111;
   padding: 12px 30px;
@@ -118,14 +86,6 @@
   font-size: 0.75em;
   font-weight: bold;
   z-index: 2;
-}
-
-/* Cartões verticais para Shorts (9:16) */
-.shorts-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
-  gap: 15px;
-  padding: 10px 20px;
 }
 
 .short-card img {
@@ -284,14 +244,22 @@
   display: grid;
   grid-template-columns: 2fr 1fr;
   gap: 15px;
-  padding: 20px;
+  width: 100%;
+  padding: 20px 40px; /* Alinha exatamente com as margens das secções abaixo */
   height: 60vh;
   min-height: 450px;
-  max-width: 1600px;
-  margin: 0 auto;
+  max-height: 680px; /* Evita que fique demasiado esticado em monitores muito altos */
+}
+
+.bento-main:hover .btn-assistir,
+.btn-assistir:hover {
+  transform: scale(1.05);
+  box-shadow: 0 0 15px rgba(28, 217, 91, 0.45);
 }
 
 .bento-main, .bento-item {
+  text-decoration: none;
+  color: inherit;
   border-radius: 12px;
   background-size: cover;
   background-position: center;
@@ -300,7 +268,14 @@
   align-items: flex-end;
   padding: 25px;
   overflow: hidden;
-  box-shadow: 0 4px 15px rgba(0,0,0,0.3);
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+  transition: transform 0.25s ease, outline-color 0.25s ease;
+  outline: 2px solid transparent;
+}
+
+.bento-main:hover, .bento-item:hover {
+  transform: scale(1.01);
+  outline-color: var(--show-accent);
 }
 
 .bento-side {
@@ -375,4 +350,56 @@
   }
   .bento-main { aspect-ratio: 16/9; }
   .bento-item { aspect-ratio: 16/9; }
+}
+
+/* =========================================
+   SUPORTE TV / COMANDO (D-PAD) E ECRÃS 4K
+   ========================================= */
+
+/* Destaque ao navegar com comando/teclado */
+.thumb-card:focus-visible img {
+  transform: scale(1.1);
+}
+
+.thumb-card:focus-visible .thumb-overlay {
+  opacity: 1;
+}
+
+.series-card:focus-visible {
+  transform: translateY(-6px);
+  box-shadow: 0 8px 20px rgba(28, 217, 91, 0.35);
+}
+
+.short-card:focus-visible {
+  transform: scale(1.04);
+}
+
+.ctrl-btn:focus-visible,
+.filter-btn:focus-visible {
+  background: var(--show-accent);
+  color: #111;
+  border-color: var(--show-accent);
+}
+
+/* Ajustes para ecrãs 4K / Smart TVs */
+@media (min-width: 2200px) {
+  .bento-hero {
+    padding: 30px 5%;
+    height: 62vh;
+    max-height: 850px;
+    gap: 22px;
+  }
+
+  .bento-side {
+    gap: 22px;
+  }
+
+  .catalog-grid {
+    grid-template-columns: repeat(auto-fill, minmax(420px, 1fr));
+    gap: 30px;
+  }
+
+  .short-card {
+    flex: 0 0 280px;
+  }
 }

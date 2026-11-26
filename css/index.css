@@ -156,10 +156,10 @@ body {
 
 /* Channel Buttons */
 .channel-buttons {
-  display: flex;
-  justify-content: center;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
   gap: 15px;
-  padding: 20px;
+  padding: 20px 40px;
   background: #141414;
 }
 
@@ -168,31 +168,31 @@ body {
   display: flex;
   align-items: center;
   width: 100%;
-  height: 200px;
+  aspect-ratio: 2 / 1;
   border: none;
   outline: 4px solid transparent;
   border-radius: 20px;
   background-repeat: no-repeat;
   background-size: cover;
-  background-position: left center;
-  padding-left: 200px;
+  background-position: center;
   cursor: pointer;
   transition: all 0.4s ease;
   text-decoration: none;
   color: #fff;
-  box-shadow: 0 4px 15px rgba(0,0,0,0.25);
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.25);
+  overflow: hidden;
 }
 
 .channel-btn-text {
   position: absolute;
-  left: 58%;
+  left: 56%;
   top: 50%;
-  transform: translateY(-50%); /* centraliza verticalmente */
+  transform: translateY(-50%);
   font-family: 'Luckiest Guy', cursive;
-  font-size: clamp(1rem, 3vw, 3rem);
+  font-size: clamp(1.3rem, 2.2vw, 2.6rem);
   line-height: 1;
   text-shadow:
-    -2px -2px 0 var(--show-accent),  
+    -2px -2px 0 var(--show-accent),
      2px -2px 0 var(--show-accent),
     -2px  2px 0 var(--show-accent),
      2px  2px 0 var(--show-accent);
@@ -201,13 +201,13 @@ body {
 
 .channel-btn:hover {
   transform: translateY(-4px);
-  box-shadow: 0 8px 20px rgba(0,0,0,0.4);
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.4);
   outline-color: var(--show-accent);
 }
 
 .channel-btn:hover .channel-btn-text {
   transform: translateY(-50%) scale(1.1);
-  text-shadow: 
+  text-shadow:
     0 0 10px var(--show-accent),
     0 0 20px var(--show-accent),
     0 0 30px var(--show-accent);
@@ -295,11 +295,21 @@ footer {
   color: #aaa;
 }
 
+/* Tablets, portáteis pequenos e modo computador no telemóvel (Grelha 2x2) */
+@media (max-width: 1150px) {
+  .channel-buttons {
+    grid-template-columns: repeat(2, 1fr);
+    padding: 20px;
+  }
+
+  .channel-btn-text {
+    font-size: clamp(1.6rem, 3.5vw, 2.5rem);
+  }
+}
+
 /* Tablets e telas médias */
 @media (max-width: 900px) {
-  /* Header */
-  .main-header {
-    flex-wrap: wrap;
+  .navbar {
     padding: 15px 20px;
   }
 
@@ -307,7 +317,6 @@ footer {
     gap: 15px;
   }
 
-  /* Banner */
   .banner-carousel {
     height: 300px;
   }
@@ -316,27 +325,18 @@ footer {
     font-size: 2em;
   }
 
-  /* Channel Buttons */
-  .channel-btn {
-    aspect-ratio: 1 / 1;
-    width: 100%;
-  }
-
-  /* Conteúdo */
   .thumb {
     width: 300px;
     height: 170px;
   }
 }
 
-/* Tablet */
+/* Tablet e Mobile: Menu Hamburger */
 @media (max-width: 768px) {
-  /* Mostra o hamburger */
   .hamburger {
     display: block;
   }
 
-  /* Esconde o menu por padrão no mobile */
   .nav-links {
     display: none;
     flex-direction: column;
@@ -344,13 +344,12 @@ footer {
     background: #111;
     padding: 20px;
     position: absolute;
-    top: 70px; /* altura do header */
+    top: 75px;
     left: 0;
     width: 100%;
     z-index: 99;
   }
 
-  /* Menu aberto */
   .nav-links.active {
     display: flex;
   }
@@ -358,38 +357,6 @@ footer {
 
 /* Mobile */
 @media (max-width: 600px) {
-  /* Mostra o hamburger */
-  .hamburger {
-    display: block;
-  }
-
-  /* Esconde o menu por padrão no mobile */
-  .nav-links {
-    display: none;
-    flex-direction: column;
-    gap: 15px;
-    background: #111;
-    padding: 20px;
-    position: absolute;
-    top: 70px; /* altura do header */
-    left: 0;
-    width: 100%;
-    z-index: 99;
-  }
-
-  /* Menu aberto */
-  .nav-links.active {
-    display: flex;
-  }
-
-  /* Header ajustado no mobile */
-  .main-header {
-    flex-direction: row;
-    justify-content: space-between;
-    align-items: center;
-  }
-
-  /* Banner menor */
   .banner-carousel {
     height: 200px;
   }
@@ -398,12 +365,16 @@ footer {
     font-size: 1.5em;
   }
 
-  /* Botões ocupando largura total */
   .channel-buttons {
-    flex-direction: column;
+    grid-template-columns: 1fr;
+    padding: 15px;
   }
 
-  /* Conteúdo */
+  .channel-btn-text {
+    left: 55%;
+    font-size: 2rem;
+  }
+
   .content-section {
     padding: 20px 10px;
   }
@@ -413,9 +384,64 @@ footer {
     height: auto;
   }
 
-  /* Footer */
   footer {
     font-size: 0.8em;
     padding: 15px;
+  }
+}
+
+/* =========================================
+   SUPORTE TV / COMANDO (D-PAD) E ECRÃS 4K
+   ========================================= */
+
+/* Foco visível global para navegação por comando ou teclado (Tab) */
+a:focus-visible,
+button:focus-visible {
+  outline: 3px solid var(--show-accent, #ffb421);
+  outline-offset: 4px;
+}
+
+.channel-btn:focus-visible {
+  transform: translateY(-4px);
+  outline: 4px solid var(--show-accent);
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.4);
+}
+
+.thumb:focus-visible {
+  transform: scale(1.05);
+  outline: 3px solid var(--show-accent);
+}
+
+/* Escala proporcional e margens de segurança (Overscan) para 4K / Smart TVs */
+@media (min-width: 2200px) {
+  html {
+    font-size: 135%; /* Aumenta proporcionalmente tudo o que usa rem/em */
+  }
+
+  .navbar {
+    padding: 25px 5%;
+  }
+
+  .nav-logo-img {
+    height: 75px;
+  }
+
+  .banner-carousel {
+    height: 55vh;
+    max-height: 750px;
+  }
+
+  .channel-buttons {
+    padding: 30px 5%;
+    gap: 25px;
+  }
+
+  .content-section {
+    padding: 50px 5%;
+  }
+
+  .thumb {
+    width: 600px;
+    height: 338px;
   }
 }

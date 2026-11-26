@@ -1,8 +1,3 @@
-:root {
-  --show-accent: #F585C6;
-  --serie-accent: #7CD341;
-}
-
 .logo a {
   display: flex;
   align-items: center;
@@ -10,14 +5,10 @@
   color: var(--serie-accent);
 }
 
-.nav-logo-img {
-  height: 55px;
-  width: auto;
-}
-
 .serie-hero {
   position: relative;
   min-height: 60vh;
+  max-height: 750px;
   background-size: cover;
   background-position: center;
   display: flex;
@@ -35,7 +26,9 @@
 .serie-hero-content {
   position: relative;
   z-index: 2;
-  max-width: 750px;
+  width: 100%;
+  max-width: 1500px;
+  margin: 0 auto;
 }
 
 .serie-meta {
@@ -66,6 +59,7 @@
   color: #ddd;
   font-size: 1.05em;
   margin-bottom: 25px;
+  max-width: 700px;
 }
 
 .serie-actions {
@@ -97,11 +91,20 @@
   transform: translateY(-2px);
 }
 
-/* Secções internas */
+.btn-secondary:hover {
+  border-color: var(--serie-secondary, var(--serie-accent));
+  color: var(--serie-secondary, var(--serie-accent));
+}
+
+.credit-group h4 {
+  color: var(--serie-secondary, var(--serie-accent));
+}
+
+/* Secções internas alinhadas com o Hero */
 .serie-section {
-  max-width: 1200px;
+  max-width: 1500px;
   margin: 0 auto;
-  padding: 40px 20px;
+  padding: 40px;
 }
 
 .serie-section h2 {
@@ -254,4 +257,50 @@
 @media (max-width: 700px) {
   .episode-row { flex-direction: column; }
   .episode-thumb { flex: auto; width: 100%; }
+}
+
+/* =========================================
+   SUPORTE TV / COMANDO (D-PAD) E ECRÃS 4K
+   ========================================= */
+
+a:focus-visible,
+button:focus-visible {
+  outline: 3px solid var(--serie-accent);
+  outline-offset: 4px;
+}
+
+.episode-row:focus-visible {
+  border-color: var(--serie-accent);
+  background: #1c1c1c;
+  transform: translateX(6px);
+}
+
+/* 2 colunas de episódios em ecrãs muito largos */
+@media (min-width: 1800px) {
+  .episodes-list {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 20px;
+  }
+}
+
+/* Margens de segurança (Overscan) e proporções em 4K / TVs */
+@media (min-width: 2200px) {
+  .serie-hero {
+    max-height: 900px;
+    padding: 60px 5%;
+  }
+
+  .serie-hero-content,
+  .serie-section {
+    max-width: 2200px;
+  }
+
+  .serie-section {
+    padding: 50px 5%;
+  }
+
+  .episode-thumb {
+    flex: 0 0 340px;
+  }
 }
