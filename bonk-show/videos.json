@@ -1,0 +1,30 @@
+[
+    {
+        "id": "ASkVFPwal3g",
+        "titulo": "THE COFFIN OF ANDY AND LEYLEY: A SÉRIE | PRIMEIROS MINUTOS",
+        "descricao": "Parte 1 em 2027.",
+        "categoria": "trailer",
+        "membros": false
+    },
+    {
+        "id": "dfQMw7jzWmQ",
+        "titulo": "HAZBIN STORIES: ALASTOR | TEASER REVELAÇÃO",
+        "descricao": "Episódio piloto em 2027.",
+        "categoria": "trailer",
+        "membros": false
+    },
+    {
+        "id": "7G3xoQCKcD8",
+        "titulo": "FIVE NIGHTS AT FREDDY'S: A SÉRIE | EPISÓDIO 2 REMASTER (A OBRA PRIMA)",
+        "descricao": "Dois anos após os terríveis acontecimentos de 1983, as coisas parecem estar se acalmando na vida de William Afton, mas por quanto tempo ele conseguirá esconder sua verdadeira face?",
+        "categoria": "episodio",
+        "membros": false
+    },
+    {
+        "id": "WY1f-WtO8RI",
+        "titulo": "JOGANDO O FNAF NOVO! Secret of The Mimic",
+        "descricao": "Live especial de gameplay.",
+        "categoria": "live",
+        "membros": true
+    }
+]

@@ -1,0 +1,257 @@
+:root {
+  --show-accent: #F585C6;
+  --serie-accent: #7CD341;
+}
+
+.logo a {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  color: var(--serie-accent);
+}
+
+.nav-logo-img {
+  height: 55px;
+  width: auto;
+}
+
+.serie-hero {
+  position: relative;
+  min-height: 60vh;
+  background-size: cover;
+  background-position: center;
+  display: flex;
+  align-items: flex-end;
+  padding: 50px 40px;
+}
+
+.serie-hero::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(to top, #0d0d0d 10%, rgba(13,13,13,0.5) 60%, rgba(13,13,13,0.2) 100%);
+}
+
+.serie-hero-content {
+  position: relative;
+  z-index: 2;
+  max-width: 750px;
+}
+
+.serie-meta {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 0.9em;
+  color: #ccc;
+  margin-bottom: 12px;
+}
+
+.age-badge {
+  background: #e50914;
+  color: #fff;
+  font-weight: bold;
+  padding: 2px 7px;
+  border-radius: 4px;
+  font-size: 0.85em;
+}
+
+.serie-hero-content h1 {
+  font-size: clamp(2rem, 4vw, 3.2rem);
+  line-height: 1.1;
+  margin-bottom: 15px;
+}
+
+.serie-sinopse {
+  color: #ddd;
+  font-size: 1.05em;
+  margin-bottom: 25px;
+}
+
+.serie-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+}
+
+.btn-primary, .btn-secondary {
+  padding: 12px 24px;
+  border-radius: 6px;
+  text-decoration: none;
+  font-weight: bold;
+  transition: transform 0.2s, opacity 0.2s;
+}
+
+.btn-primary {
+  background: var(--serie-accent);
+  color: #111;
+}
+
+.btn-secondary {
+  background: rgba(255,255,255,0.1);
+  color: #fff;
+  border: 1px solid rgba(255,255,255,0.2);
+}
+
+.btn-primary:hover, .btn-secondary:hover {
+  transform: translateY(-2px);
+}
+
+/* Secções internas */
+.serie-section {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 40px 20px;
+}
+
+.serie-section h2 {
+  font-size: 1.6em;
+  margin-bottom: 20px;
+  border-left: 4px solid var(--serie-accent);
+  padding-left: 12px;
+}
+
+/* Lista de Episódios */
+.episodes-list {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.episode-row {
+  display: flex;
+  gap: 20px;
+  background: #141414;
+  border-radius: 10px;
+  padding: 14px;
+  text-decoration: none;
+  color: inherit;
+  border: 1px solid #222;
+  transition: border-color 0.2s, transform 0.2s;
+}
+
+.episode-row:hover {
+  border-color: var(--serie-accent);
+  transform: translateX(4px);
+}
+
+.episode-thumb {
+  position: relative;
+  flex: 0 0 260px;
+  aspect-ratio: 16 / 9;
+  border-radius: 6px;
+  overflow: hidden;
+}
+
+.episode-thumb img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.duration {
+  position: absolute;
+  bottom: 8px;
+  right: 8px;
+  background: rgba(0,0,0,0.85);
+  padding: 2px 6px;
+  border-radius: 4px;
+  font-size: 0.8em;
+  font-weight: 600;
+}
+
+.ep-number {
+  color: var(--serie-accent);
+  font-size: 0.8em;
+  font-weight: 700;
+  letter-spacing: 0.5px;
+}
+
+.episode-info h3 { margin: 4px 0 8px; font-size: 1.2em; }
+.episode-info p { color: #aaa; font-size: 0.95em; }
+
+/* Elenco */
+.cast-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  gap: 15px;
+}
+
+.cast-card {
+  background: #141414;
+  padding: 16px;
+  border-radius: 8px;
+  border: 1px solid #222;
+}
+
+/* Grelha de Produção por Departamento */
+.credits-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 16px;
+}
+
+.credit-group {
+  background: #141414;
+  border: 1px solid #222;
+  border-radius: 8px;
+  padding: 18px;
+}
+
+.credit-group h4 {
+  color: var(--serie-accent);
+  font-size: 0.95em;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  margin-bottom: 10px;
+}
+
+.credit-group p {
+  font-size: 0.9em;
+  color: #ccc;
+  margin-bottom: 6px;
+}
+
+.credit-group p strong {
+  color: #fff;
+}
+
+/* Aviso Legal (Kit9 Studio) */
+.serie-disclaimer {
+  margin-top: 35px;
+  padding: 18px 22px;
+  background: rgba(255, 255, 255, 0.03);
+  border-left: 3px solid #555;
+  border-radius: 6px;
+  font-size: 0.85em;
+  color: #999;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: center;
+  gap: 15px;
+}
+
+.serie-disclaimer p {
+  max-width: 750px;
+  margin: 0;
+}
+
+.serie-disclaimer a {
+  color: var(--serie-accent);
+  text-decoration: none;
+  font-weight: 600;
+  white-space: nowrap;
+}
+
+.serie-disclaimer a:hover {
+  text-decoration: underline;
+}
+
+.cast-card h4 { margin-bottom: 4px; color: #fff; }
+.cast-card span { font-size: 0.85em; color: #aaa; }
+
+@media (max-width: 700px) {
+  .episode-row { flex-direction: column; }
+  .episode-thumb { flex: auto; width: 100%; }
+}

@@ -4,45 +4,145 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="Site oficial da Bonk Studios - Projetos de animação, jogos e muito mais!">
-  <title>Bonk Studios</title>
-  <link rel="stylesheet" href="../../../css/index.css">
+  <meta name="description" content="Bonk Show - As melhores séries animadas da Bonk Studios.">
+  <title>Bonk Show | Bonk Studios</title>
+  
+  <!-- CSS global para Navbar e Footer -->
+  <link rel="stylesheet" href="../css/index.css">
+  <!-- CSS específico para manter o código de fácil manutenção -->
+  <link rel="stylesheet" href="../css/bonk-show.css">
+  
+  <link rel="icon" type="image/x-icon" href="../images/bonk_studios_favicon.ico">
 </head>
 
 <body>
-  <header class="main-header">
-    <div class="logo">Bonk Studios</div>
+  <!-- Navbar adaptada -->
+  <header class="navbar">
+    <div class="logo">
+      <a href="../index.html">
+        <img src="../images/logos/bonk_show_logo_no_background_fitToImage.png" alt="Mascote Bonk Show" class="nav-logo-img">
+        Bonk Studios
+      </a>
+    </div>
     <nav>
       <ul class="nav-links">
-        <li><a href="#">Home</a></li>
+        <li><a href="../index.html">Home</a></li>
         <li><a href="#">Procurar</a></li>
-        <li><a href="#">Bonk Show</a></li>
-        <li><a href="#">Bonk Music</a></li>
-        <li><a href="#">Bonk Play</a></li>
+        <li><a href="#" class="active" style="color: var(--show-accent);">Bonk Show</a></li>
+        <li><a href="../bonk-music/">Bonk Music</a></li>
+        <li><a href="../bonk-play/">Bonk Play</a></li>
+        <li><a href="../bonk-expo/">Bonk Expo</a></li>
       </ul>
     </nav>
+    <div class="hamburger">
+      &#9776;
+    </div>
   </header>
 
-  <section class="conteudo-secao">
-    <h2>Séries</h2>
-    <div class="thumb-carousel">
-      <button class="thumb-btn left">&#10094;</button>
-      <div class="thumbs">
-        <a href="../bonk-show/series/tcoaal/index.html" class="thumb"><img src="../../../imagens/thumbs/ep1_remaster_fnaf_thumb.png" alt="TCOAAL: A Série" /></a>
-        <a href="../bonk-show/series/fnaf/index.html" class="thumb"><img src="../../../imagens/thumbs/ep1_remaster_fnaf_thumb.png" alt="FNAF: A Série" /></a>
-        <a href="../bonk-show/series/anatema/index.html" class="thumb"><img src="../../../imagens/thumbs/ep1_remaster_fnaf_thumb.png" alt="Record of Ragnarock" /></a>
-        <a href="../bonk-show/series/inferno/index.html" class="thumb"><img src="../../../imagens/thumbs/ep1_remaster_fnaf_thumb.png" alt="Record of Ragnarock" /></a>
-        <!-- Adiciona mais thumbs aqui -->
+  <!-- Mosaico de Destaques -->
+  <section class="bento-hero">
+    <!-- Destaque Principal: Hazbin Stories -->
+    <div class="bento-main" style="background-image: url('../images/thumbs/show/hs_alastor_reveal_teaser_thumb.png')">
+      <span class="tag" style="background: #fff;">NOVO TEASER</span>
+      <div class="bento-content">
+        <h1>Hazbin Stories: Alastor</h1>
+        <h2>Teaser Revelação Oficial</h2>
+        <button class="btn-assistir">Ver Teaser</button>
       </div>
-      <button class="thumb-btn right">&#10095;</button>
+    </div>
+
+    <div class="bento-side">
+      <!-- Destaque Secundário 1: Coffin Ep 1 -->
+      <div class="bento-item" style="background-image: url('../images/thumbs/show/tcoaal_first_minutes_preview_thumb.png')">
+        <span class="tag tag-trailer" style="background: var(--show-accent);">PRIMEIROS MINUTOS</span>
+        <div class="bento-content">
+          <h3>The Coffin of Andy and Leyley: Ep 1</h3>
+        </div>
+      </div>
+      
+      <!-- Destaque Secundário 2: FNAF em Alta -->
+      <div class="bento-item" style="background-image: url('../images/thumbs/show/ep2_remaster_fnaf_thumb.png')">
+        <span class="tag tag-alta" style="background: #ff4757; color: #fff;">EM ALTA</span>
+        <div class="bento-content">
+          <h3>FNAF: A Série (Episódio 2 REMASTER)</h3>
+        </div>
+      </div>
     </div>
   </section>
 
+  <!-- Secção de Séries (Carrossel de 5 em 5) -->
+  <section class="content-section">
+    <div class="section-header">
+      <h2>Séries</h2>
+      <div class="carousel-controls" id="series-controls">
+        <button class="ctrl-btn" id="series-prev">&#10094;</button>
+        <button class="ctrl-btn" id="series-next">&#10095;</button>
+      </div>
+    </div>
+    
+    <div class="series-carousel" id="series-carousel">
+      <a href="series/tcoaal/" class="series-card">
+        <img src="../images/thumbs/tcoaal_thumb.png" alt="The Coffin of Andy and Leyley" />
+        <div class="series-info">
+          <h3>The Coffin of Andy and Leyley</h3>
+          <span>1 Episódio</span>
+        </div>
+      </a>
+      <a href="series/fnaf/" class="series-card">
+        <img src="../images/thumbs/fnaf_thumb.png" alt="FNAF: A Série" />
+        <div class="series-info">
+          <h3>FNAF: A Série</h3>
+          <span>2 Episódios</span>
+        </div>
+      </a>
+      <a href="series/anatema/" class="series-card">
+        <img src="../images/thumbs/show/ep_piloto_anatema_thumb.jpg" alt="Luz vs Escuridão" />
+        <div class="series-info">
+          <h3>Luz vs Escuridão</h3>
+          <span>1 Episódio</span>
+        </div>
+      </a>
+      <!-- Quando tiverem mais séries, basta adicionar mais blocos <a> aqui -->
+    </div>
+  </section>
+
+  <!-- Catálogo com Filtros -->
+  <section class="content-section">
+    <h2>Catálogo de Vídeos</h2>
+    <div class="catalog-filters">
+      <button class="filter-btn active" data-filter="todos">Todos</button>
+      <button class="filter-btn" data-filter="episodio">Episódios</button>
+      <button class="filter-btn" data-filter="trailer">Trailers</button>
+      <button class="filter-btn" data-filter="live">Lives</button>
+      <button class="filter-btn" data-filter="especial">Especiais</button>
+    </div>
+    
+    <!-- O JavaScript vai gerar os cartões aqui dentro -->
+    <div class="catalog-grid" id="catalog-grid"></div>
+  </section>
+
+  <!-- Secção de Shorts (Prateleira 9:16) -->
+  <section class="content-section">
+    <div class="section-header">
+      <h2>Shorts</h2>
+      <div class="carousel-controls">
+        <button class="ctrl-btn" id="shorts-prev">&#10094;</button>
+        <button class="ctrl-btn" id="shorts-next">&#10095;</button>
+      </div>
+    </div>
+
+    <!-- Preenchido automaticamente pelo videos.json (categoria: "short") -->
+    <div class="shorts-shelf" id="shorts-shelf"></div>
+  </section>
+
+  <!-- Footer original mantido -->
   <footer>
-    <p>&copy; 2025 Bonk Studios. Todos os direitos reservados.</p>
+    <p>&copy; 2026 Bonk Studios. Todos os direitos reservados.</p>
   </footer>
 
-  <script src="../../../js/index.js"></script>
+  <!-- Script global para o menu mobile -->
+  <script src="../js/index.js"></script>
+  <script src="../js/bonk-show.js"></script>
 </body>
 
 </html>

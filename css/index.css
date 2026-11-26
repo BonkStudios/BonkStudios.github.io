@@ -8,6 +8,10 @@
   font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
 
+:root {
+  --show-accent: #ffb421;
+}
+
 body {
   background-color: #0d0d0d;
   color: #ffffff;
@@ -18,7 +22,7 @@ body {
 /* Header */
 .navbar {
   background-color: #111;
-  padding: 20px 40px;
+  padding: 20px 30px;
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -36,11 +40,20 @@ body {
   cursor: pointer;
 }
 
+/* Flexbox para alinhar o ícone perfeitamente ao lado do texto */
 .logo a {
-  color: #ffb421;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  color: var(--show-accent);
   font-size: 1.8em;
   text-decoration: none;
   font-weight: bold;
+}
+
+.nav-logo-img {
+  height: 55px;
+  width: auto;
 }
 
 .nav-links {
@@ -57,7 +70,7 @@ body {
 }
 
 .nav-links li a:hover {
-  color: #ffb421;
+  color: var(--show-accent);
 }
 
 /* Banner */
@@ -94,7 +107,7 @@ body {
 
 .banner-info h1 {
   font-size: 2.5em;
-  color: #ffb421;
+  color: var(--show-accent);
   margin-bottom: 10px;
 }
 
@@ -138,7 +151,7 @@ body {
 }
 
 .carousel-dots .dot.active {
-  background-color: #ffb421;
+  background-color: var(--show-accent);
 }
 
 /* Channel Buttons */
@@ -179,25 +192,25 @@ body {
   font-size: clamp(1rem, 3vw, 3rem);
   line-height: 1;
   text-shadow:
-    -2px -2px 0 #ffb421,  
-     2px -2px 0 #ffb421,
-    -2px  2px 0 #ffb421,
-     2px  2px 0 #ffb421;
+    -2px -2px 0 var(--show-accent),  
+     2px -2px 0 var(--show-accent),
+    -2px  2px 0 var(--show-accent),
+     2px  2px 0 var(--show-accent);
   transition: transform 0.3s ease, text-shadow 0.3s ease;
 }
 
 .channel-btn:hover {
   transform: translateY(-4px);
   box-shadow: 0 8px 20px rgba(0,0,0,0.4);
-  outline-color: #ffb421;
+  outline-color: var(--show-accent);
 }
 
 .channel-btn:hover .channel-btn-text {
   transform: translateY(-50%) scale(1.1);
   text-shadow: 
-    0 0 10px #ffb421,
-    0 0 20px #ffb421,
-    0 0 30px #ffb421;
+    0 0 10px var(--show-accent),
+    0 0 20px var(--show-accent),
+    0 0 30px var(--show-accent);
 }
 
 /* Seção de conteúdo */

@@ -1,48 +1,166 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
-
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="Site oficial da Bonk Studios - Projetos de animação, jogos e muito mais!">
-  <title>Bonk Studios</title>
+  <title>The Coffin of Andy and Leyley: A Série | Bonk Show</title>
   <link rel="stylesheet" href="../../../css/index.css">
+  <link rel="stylesheet" href="../../../css/serie.css">
+  <link rel="icon" type="image/x-icon" href="../../../images/bonk_studios_favicon.ico">
+  <style>
+    /* Cor temática desta série específica */
+    :root { --serie-accent: #1fd655; }
+  </style>
 </head>
-
 <body>
-  <header class="main-header">
-    <div class="logo">Bonk Studios</div>
+  <!-- Navbar adaptada -->
+  <header class="navbar">
+    <div class="logo">
+      <a href="../../../index.html">
+        <img src="../../../images/logos/bonk_show_logo_no_background_fitToImage.png" alt="Mascote Bonk Show" class="nav-logo-img">
+        Bonk Studios
+      </a>
+    </div>
     <nav>
       <ul class="nav-links">
-        <li><a href="#">Home</a></li>
+        <li><a href="../../../index.html">Home</a></li>
         <li><a href="#">Procurar</a></li>
-        <li><a href="#">Bonk Show</a></li>
-        <li><a href="#">Bonk Music</a></li>
-        <li><a href="#">Bonk Play</a></li>
+        <li><a href="../../index.html" style="color: var(--serie-accent);">Bonk Show</a></li>
+        <li><a href="../../../bonk-music/">Bonk Music</a></li>
+        <li><a href="../../../bonk-play/">Bonk Play</a></li>
+        <li><a href="../../../bonk-expo/">Bonk Expo</a></li>
       </ul>
     </nav>
+    <div class="hamburger">&#9776;</div>
   </header>
 
-  <section class="conteudo-secao">
-    <h2>Séries</h2>
-    <div class="thumb-carousel">
-      <button class="thumb-btn left">&#10094;</button>
-      <div class="thumbs">
-        <a href="../../../bonk-show/series/tcoaal/index.html" class="thumb"><img src="../../../imagens/thumbs/ep1_remaster_fnaf_thumb.png" alt="TCOAAL: A Série" /></a>
-        <a href="../../../bonk-show/series/fnaf/index.html" class="thumb"><img src="../../../imagens/thumbs/ep1_remaster_fnaf_thumb.png" alt="FNAF: A Série" /></a>
-        <a href="../../../bonk-show/series/anatema/index.html" class="thumb"><img src="../../../imagens/thumbs/ep1_remaster_fnaf_thumb.png" alt="Record of Ragnarock" /></a>
-        <a href="../../../bonk-show/series/inferno/index.html" class="thumb"><img src="../../../imagens/thumbs/ep1_remaster_fnaf_thumb.png" alt="Record of Ragnarock" /></a>
-        <!-- Adiciona mais thumbs aqui -->
+  <!-- Hero da Série -->
+  <section class="serie-hero" style="background-image: url('../../../images/banners/placeholder_tcoaal_banner.png')">
+    <div class="serie-hero-content">
+      <div class="serie-meta">
+        <span class="age-badge">16+</span>
+        <span>Animação • Suspense</span>
+        <span>• Áudio: PT, EN, ES, RU</span>
       </div>
-      <button class="thumb-btn right">&#10095;</button>
+      <h1>The Coffin of Andy and Leyley: A Série</h1>
+      <p class="serie-sinopse">
+        A história acompanha Andy, um jovem assombrado por um passado sombrio, e Leyley, a sua irmã profundamente obcecada por ele. Unidos pelo sangue e por segredos perturbadores, os dois embarcam numa jornada macabra que expõe os limites da sanidade, da codependência e da culpa.
+      </p>
+      <div class="serie-actions">
+        <a href="https://www.youtube.com/watch?v=ID_EPISODIO_PILOTO" target="_blank" rel="noopener noreferrer" class="btn-primary">
+          &#9654; Assistir no YouTube
+        </a>
+        <a href="https://www.catarse.me/tcoal-bonkshow" target="_blank" rel="noopener noreferrer" class="btn-secondary">
+          Apoiar no Catarse
+        </a>
+        <a href="https://soopi.lojavirtualnuvem.com.br/" target="_blank" rel="noopener noreferrer" class="btn-secondary">
+          Loja Oficial
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Lista de Episódios -->
+  <section class="serie-section">
+    <h2>Episódios</h2>
+    <div class="episodes-list">
+      <a href="https://www.youtube.com/watch?v=UD1Ed0PLuJM" target="_blank" rel="noopener noreferrer" class="episode-row">
+        <div class="episode-thumb">
+          <img src="../../../images/thumbs/show/ep_piloto_tcoaal_thumb.jpg" alt="Episódio Piloto">
+          <span class="duration">13:06</span>
+        </div>
+        <div class="episode-info">
+          <span class="ep-number">EPISÓDIO PILOTO</span>
+          <h3>Episódio Piloto</h3>
+          <p>Andy e Leyley sempre tiveram uma relação tumultuada. Mas quando Leyley descobre que a sua amiga está interessada no seu irmão, decide que isso não pode ficar sem consequências e sugere uma ideia incomum: "dar uma lição na garota".</p>
+        </div>
+      </a>
+
+      <a href="https://www.youtube.com/watch?v=ASkVFPwal3g" target="_blank" rel="noopener noreferrer" class="episode-row">
+        <div class="episode-thumb">
+          <img src="../../../images/thumbs/show/tcoaal_first_minutes_preview_thumb.png" alt="Primeiros Minutos Ep 1">
+          <span class="duration">2:51</span>
+        </div>
+        <div class="episode-info">
+          <span class="ep-number">PRÉVIA • EPISÓDIO 1</span>
+          <h3>Primeiros Minutos</h3>
+          <p>Um vislumbre exclusivo dos primeiros minutos do Episódio 1 com o novo estilo de arte.</p>
+        </div>
+      </a>
+    </div>
+  </section>
+
+  <!-- Elenco de Vozes -->
+  <section class="serie-section">
+    <h2>Elenco de Vozes</h2>
+    <div class="cast-grid">
+      <div class="cast-card">
+        <h4>Rodolfo Novaes</h4>
+        <span>Andy / Andrew Graves</span>
+      </div>
+      <div class="cast-card">
+        <h4>Mih Domínguez</h4>
+        <span>Leyley</span>
+      </div>
+      <div class="cast-card">
+        <h4>Rapha Rocha</h4>
+        <span>Ashley</span>
+      </div>
+      <div class="cast-card">
+        <h4>Purple Moon</h4>
+        <span>Nina</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- Equipa de Produção (Agrupada por Departamento) -->
+  <section class="serie-section">
+    <h2>Produção</h2>
+    <div class="credits-grid">
+      <div class="credit-group">
+        <h4>Direção &amp; Roteiro</h4>
+        <p><strong>Direção:</strong> Sr Dio</p>
+        <p><strong>Roteiro &amp; Storyboard:</strong> LunahYoru</p>
+        <p><strong>Direção de Voz:</strong> Sr Dio, LunahYoru</p>
+        <p><strong>Produção Executiva:</strong> Pedro Teixeira</p>
+      </div>
+
+      <div class="credit-group">
+        <h4>Arte &amp; Animação</h4>
+        <p><strong>Personagens:</strong> Samis</p>
+        <p><strong>Cenários:</strong> Otto, Naldimar Filho &amp; Samis</p>
+        <p><strong>Animação:</strong> Hgl, oyPixel, Stellz</p>
+        <p><strong>Thumbnail:</strong> 4lzh3imer (Arte), Sr Dio (Comp.)</p>
+      </div>
+
+      <div class="credit-group">
+        <h4>Áudio &amp; Trilha</h4>
+        <p><strong>Trilha Sonora Original:</strong> ZG, Tcoaal OST</p>
+        <p><strong>Mixagem de Áudio:</strong> Reddinthemic</p>
+      </div>
+
+      <div class="credit-group">
+        <h4>Edição &amp; Legendas</h4>
+        <p><strong>Edição:</strong> Sr Dio, Hgl, Kachiluna (Abertura)</p>
+        <p><strong>Legendas:</strong> Souodudu</p>
+        <p><strong>Tradução (EN/ES):</strong> Hunter</p>
+      </div>
+    </div>
+
+    <!-- Aviso Legal & Link da Steam -->
+    <div class="serie-disclaimer">
+      <p>
+        <strong>Aviso:</strong> Esta série é uma produção independente da Bonk Studios inspirada na história de <em>"The Coffin of Andy and Leyley"</em> e não é endossada, patrocinada ou autorizada pelos desenvolvedores da Kit9 Studio.
+      </p>
+      <a href="https://store.steampowered.com/app/2378900/The_Coffin_of_Andy_and_Leyley/" target="_blank" rel="noopener noreferrer">
+        Comprar o jogo original na Steam &#8599;
+      </a>
     </div>
   </section>
 
   <footer>
-    <p>&copy; 2025 Bonk Studios. Todos os direitos reservados.</p>
+    <p>&copy; 2026 Bonk Studios. Todos os direitos reservados.</p>
   </footer>
-
   <script src="../../../js/index.js"></script>
 </body>
-
 </html>

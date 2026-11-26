@@ -1,0 +1,378 @@
+:root {
+  --show-accent: #1CD95B; 
+}
+
+/* Flexbox para alinhar o ícone perfeitamente ao lado do texto */
+.logo a {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  color: var(--show-accent);
+}
+
+.nav-logo-img {
+  height: 55px;
+  width: auto;
+}
+
+/* Hero Cinemático com gradiente escuro na base para fundir com o fundo */
+.hero-cinematic {
+  height: 65vh;
+  background-size: cover;
+  background-position: center top;
+  position: relative;
+  display: flex;
+  align-items: flex-end;
+  padding: 40px;
+}
+
+.hero-cinematic::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; right: 0; bottom: 0;
+  background: linear-gradient(to top, #0d0d0d 5%, transparent 70%);
+}
+
+.hero-content {
+  position: relative;
+  z-index: 2;
+  max-width: 650px;
+}
+
+.hero-content h1 { color: var(--show-accent); font-size: 3.5em; line-height: 1; margin-bottom: 5px;}
+.hero-content h2 { font-size: 1.5em; color: #fff; margin-bottom: 15px;}
+.hero-content p { margin-bottom: 20px; font-size: 1.1em; color: #ccc;}
+
+.btn-assistir {
+  background: var(--show-accent);
+  color: #111;
+  padding: 12px 30px;
+  border: none;
+  font-weight: bold;
+  font-size: 1.1em;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.btn-assistir:hover {
+  transform: scale(1.05);
+  box-shadow: 0 0 15px rgba(255, 180, 33, 0.4);
+}
+
+/* Grelha de Catálogo e Efeito Hover */
+.catalog-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+  gap: 25px;
+  padding: 10px 20px;
+}
+
+.thumb-card {
+  display: block;
+  text-decoration: none;
+  color: inherit;
+  position: relative;
+  border-radius: 6px;
+  overflow: hidden;
+  cursor: pointer;
+}
+
+.thumb-card img {
+  width: 100%;
+  aspect-ratio: 16/9;
+  object-fit: cover;
+  display: block;
+  transition: transform 0.3s ease;
+}
+
+.thumb-overlay {
+  position: absolute;
+  top: 0; left: 0; right: 0; bottom: 0;
+  background: rgba(0,0,0,0.85);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 25px;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.thumb-card:hover img { transform: scale(1.1); }
+.thumb-card:hover .thumb-overlay { opacity: 1; }
+
+.thumb-overlay h3 { color: var(--show-accent); margin-bottom: 10px; font-size: 1.3em;}
+.thumb-overlay p { font-size: 0.95em; margin-bottom: 10px;}
+.thumb-overlay .elenco { font-size: 0.8em; color: #888; font-style: italic;}
+
+/* Selo de exclusivo para membros */
+.badge-membros {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  background: rgba(15, 15, 15, 0.85);
+  color: var(--show-accent);
+  border: 1px solid var(--show-accent);
+  padding: 4px 10px;
+  border-radius: 4px;
+  font-size: 0.75em;
+  font-weight: bold;
+  z-index: 2;
+}
+
+/* Cartões verticais para Shorts (9:16) */
+.shorts-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+  gap: 15px;
+  padding: 10px 20px;
+}
+
+.short-card img {
+  aspect-ratio: 9 / 16;
+  object-fit: cover;
+}
+
+/* Cabeçalho de secção com setas alinhadas à direita */
+.section-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 20px;
+  margin-bottom: 20px;
+}
+
+.section-header h2 {
+  margin-bottom: 0;
+  padding-left: 0;
+}
+
+.carousel-controls {
+  display: flex;
+  gap: 10px;
+}
+
+.ctrl-btn {
+  background: #1a1a1a;
+  color: #fff;
+  border: 1px solid #333;
+  width: 38px;
+  height: 38px;
+  border-radius: 50%;
+  cursor: pointer;
+  font-size: 1.1em;
+  transition: all 0.2s ease;
+}
+
+.ctrl-btn:hover {
+  background: var(--show-accent);
+  color: #111;
+  border-color: var(--show-accent);
+}
+
+/* Carrossel de Séries (até 5 visíveis no desktop) */
+.series-carousel {
+  display: flex;
+  gap: 20px;
+  overflow-x: auto;
+  scroll-behavior: smooth;
+  padding: 10px 20px;
+  scrollbar-width: none;
+}
+
+.series-carousel::-webkit-scrollbar { display: none; }
+
+.series-card {
+  flex: 0 0 calc(20% - 16px); /* 5 cartões por ecrã */
+  min-width: 220px;
+  position: relative;
+  border-radius: 10px;
+  overflow: hidden;
+  text-decoration: none;
+  color: #fff;
+  background: #141414;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.series-card img {
+  width: 100%;
+  aspect-ratio: 16 / 10;
+  object-fit: cover;
+  display: block;
+}
+
+.series-info {
+  padding: 12px 15px;
+}
+
+.series-info h3 {
+  font-size: 1.05em;
+  margin-bottom: 4px;
+  color: #fff;
+}
+
+.series-info span {
+  font-size: 0.85em;
+  color: var(--show-accent);
+  font-weight: 600;
+}
+
+.series-card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 8px 20px rgba(31, 214, 85, 0.2);
+}
+
+/* Prateleira de Shorts (9:16) */
+.shorts-shelf {
+  display: flex;
+  gap: 15px;
+  overflow-x: auto;
+  scroll-behavior: smooth;
+  padding: 10px 20px;
+  scrollbar-width: none;
+}
+
+.shorts-shelf::-webkit-scrollbar { display: none; }
+
+.short-card {
+  flex: 0 0 210px;
+  position: relative;
+  border-radius: 12px;
+  overflow: hidden;
+  text-decoration: none;
+  color: #fff;
+  aspect-ratio: 9 / 16;
+  transition: transform 0.25s ease;
+}
+
+.short-card img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.short-card::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(to top, rgba(0,0,0,0.85) 0%, transparent 45%);
+}
+
+.short-title {
+  position: absolute;
+  bottom: 12px;
+  left: 12px;
+  right: 12px;
+  z-index: 2;
+  font-size: 0.9em;
+  font-weight: 600;
+  line-height: 1.3;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+.short-card:hover {
+  transform: scale(1.04);
+}
+
+/* Bento Grid Hero */
+.bento-hero {
+  display: grid;
+  grid-template-columns: 2fr 1fr;
+  gap: 15px;
+  padding: 20px;
+  height: 60vh;
+  min-height: 450px;
+  max-width: 1600px;
+  margin: 0 auto;
+}
+
+.bento-main, .bento-item {
+  border-radius: 12px;
+  background-size: cover;
+  background-position: center;
+  position: relative;
+  display: flex;
+  align-items: flex-end;
+  padding: 25px;
+  overflow: hidden;
+  box-shadow: 0 4px 15px rgba(0,0,0,0.3);
+}
+
+.bento-side {
+  display: grid;
+  grid-template-rows: 1fr 1fr;
+  gap: 15px;
+}
+
+/* Gradiente escuro para legibilidade do texto */
+.bento-main::before, .bento-item::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; right: 0; bottom: 0;
+  background: linear-gradient(to top, rgba(0,0,0,0.9) 0%, transparent 60%);
+}
+
+.bento-content {
+  position: relative;
+  z-index: 2;
+}
+
+.bento-main h1 { color: var(--show-accent); font-size: 3em; line-height: 1; margin-bottom: 5px; }
+.bento-main h2 { color: #fff; font-size: 1.4em; margin-bottom: 15px; }
+.bento-item h3 { color: #fff; font-size: 1.2em; text-shadow: 1px 1px 3px rgba(0,0,0,0.8); }
+
+/* Etiquetas de Contexto (Tags) */
+.tag {
+  position: absolute;
+  top: 20px;
+  left: 20px;
+  background: var(--show-accent);
+  color: #111;
+  padding: 6px 12px;
+  font-weight: 800;
+  font-size: 0.75em;
+  border-radius: 4px;
+  z-index: 2;
+  letter-spacing: 0.5px;
+}
+
+/* Filtros do Catálogo */
+.catalog-filters {
+  display: flex;
+  gap: 12px;
+  padding: 0 20px;
+  margin-bottom: 25px;
+}
+
+.filter-btn {
+  background: #1a1a1a;
+  color: #ccc;
+  border: 1px solid #333;
+  padding: 8px 18px;
+  border-radius: 20px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.filter-btn:hover { background: #333; color: #fff; }
+.filter-btn.active {
+  background: var(--show-accent);
+  color: #111;
+  border-color: var(--show-accent);
+}
+
+/* Responsividade: Empilhar em ecrãs menores */
+@media (max-width: 900px) {
+  .bento-hero {
+    grid-template-columns: 1fr;
+    height: auto;
+  }
+  .bento-main { aspect-ratio: 16/9; }
+  .bento-item { aspect-ratio: 16/9; }
+}
