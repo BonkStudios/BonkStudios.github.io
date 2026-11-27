@@ -280,6 +280,7 @@
 /* Filtros do Catálogo */
 .catalog-filters {
   display: flex;
+  flex-wrap: wrap;
   gap: 12px;
   padding: 0 20px;
   margin-bottom: 25px;
@@ -301,6 +302,26 @@
   background: var(--show-accent);
   color: #111;
   border-color: var(--show-accent);
+}
+
+/* Estilo premium para o botão de Membros (igual à badge) */
+.filter-btn[data-filter="membros"] {
+  background: rgba(15, 15, 15, 0.85);
+  color: var(--show-accent);
+  border: 1px solid var(--show-accent);
+  font-weight: bold;
+}
+
+.filter-btn[data-filter="membros"]:hover {
+  background: rgba(28, 217, 91, 0.15);
+  color: var(--show-accent);
+  box-shadow: 0 0 12px rgba(28, 217, 91, 0.25);
+}
+
+.filter-btn[data-filter="membros"].active {
+  background: var(--show-accent);
+  color: #111;
+  box-shadow: 0 0 14px rgba(28, 217, 91, 0.45);
 }
 
 /* Responsividade: Empilhar em ecrãs menores */

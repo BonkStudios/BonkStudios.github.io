@@ -103,7 +103,7 @@ async function carregarCarrosselHome(containerId, jsonPath, limite = 8) {
       episodio: 'Episódio',
       trailer: 'Teaser / Trailer',
       live: 'Live',
-      especial: 'Especial'
+      especial: 'Extras'
     };
 
     container.innerHTML = '';

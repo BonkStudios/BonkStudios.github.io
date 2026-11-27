@@ -74,6 +74,7 @@ document.addEventListener('DOMContentLoaded', () => {
         shortCard.className = 'short-card';
         shortCard.innerHTML = `
           <img src="${thumbUrl}" alt="${video.titulo}" loading="lazy"
+            onload="if (this.naturalWidth <= 120) { this.onload=null; this.src='https://img.youtube.com/vi/${video.id}/hqdefault.jpg'; }"
             onerror="this.onerror=null; this.src='https://img.youtube.com/vi/${video.id}/hqdefault.jpg';" />
           <span class="short-title">${video.titulo}</span>
         `;
@@ -104,6 +105,7 @@ document.addEventListener('DOMContentLoaded', () => {
       card.rel = 'noopener noreferrer';
       card.className = 'thumb-card';
       card.setAttribute('data-category', video.categoria);
+      card.setAttribute('data-membros', video.membros ? 'true' : 'false');
 
       card.innerHTML = `
         ${badgeTopo}
@@ -130,7 +132,14 @@ document.addEventListener('DOMContentLoaded', () => {
       const cards = catalogGrid.querySelectorAll('.thumb-card');
 
       cards.forEach(card => {
-        if (filtro === 'todos' || card.getAttribute('data-category') === filtro) {
+        const ehMembros = card.getAttribute('data-membros') === 'true';
+        const categoria = card.getAttribute('data-category');
+
+        if (
+          filtro === 'todos' ||
+          (filtro === 'membros' && ehMembros) ||
+          categoria === filtro
+        ) {
           card.style.display = 'block';
         } else {
           card.style.display = 'none';
