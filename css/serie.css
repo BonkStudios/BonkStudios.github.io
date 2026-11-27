@@ -96,10 +96,6 @@
   color: var(--serie-secondary, var(--serie-accent));
 }
 
-.credit-group h4 {
-  color: var(--serie-secondary, var(--serie-accent));
-}
-
 /* Secções internas alinhadas com o Hero */
 .serie-section {
   max-width: 1500px;
@@ -202,7 +198,7 @@
 }
 
 .credit-group h4 {
-  color: var(--serie-accent);
+  color: var(--serie-secondary, var(--serie-accent));
   font-size: 0.95em;
   text-transform: uppercase;
   letter-spacing: 0.5px;

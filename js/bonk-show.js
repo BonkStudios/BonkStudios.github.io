@@ -34,6 +34,9 @@ document.addEventListener('DOMContentLoaded', () => {
       if (!response.ok) throw new Error('Não foi possível carregar videos.json');
       
       const videos = await response.json();
+
+      // Ordena do mais recente para o mais antigo (vídeos sem data vão para o fim)
+      videos.sort((a, b) => new Date(b.data || 0) - new Date(a.data || 0));
       renderizarCatalogo(videos);
     } catch (erro) {
       console.error('Erro ao carregar o catálogo:', erro);
@@ -41,6 +44,12 @@ document.addEventListener('DOMContentLoaded', () => {
     }
   }
 
+  function formatarData(dataISO) {
+    if (!dataISO) return '';
+    const [ano, mes, dia] = dataISO.split('-');
+    return `${dia}/${mes}/${ano}`;
+  }
+  
   // Cria os cartões no HTML
   function renderizarCatalogo(videos) {
     catalogGrid.innerHTML = '';
@@ -48,6 +57,13 @@ document.addEventListener('DOMContentLoaded', () => {
 
     videos.forEach(video => {
       const thumbUrl = video.thumb || `https://img.youtube.com/vi/${video.id}/maxresdefault.jpg`;
+
+      const nomesCategorias = {
+        episodio: 'Episódio',
+        trailer: 'Teaser / Trailer',
+        live: 'Live',
+        especial: 'Especial'
+      };
 
       // Se for Short, vai para a prateleira 9:16
       if (video.categoria === 'short') {
@@ -65,8 +81,23 @@ document.addEventListener('DOMContentLoaded', () => {
         return;
       }
 
-      // Caso contrário, vai para a grelha principal 16:9 (com suporte ao selo de membros)
-      const badgeMembros = video.membros ? '<span class="badge-membros">★ Membros</span>' : '';
+      const nomeCat = nomesCategorias[video.categoria];
+      const badgeCategoria = nomeCat
+        ? `<span class="badge-categoria cat-${video.categoria}">${nomeCat}</span>`
+        : '';
+      
+      const dataHtml = video.data ? `<span class="thumb-date">${formatarData(video.data)}</span>` : '';
+
+      // Verifica se o vídeo saiu nos últimos 30 dias
+      const ehRecente = video.data && (Date.now() - new Date(video.data)) / (1000 * 60 * 60 * 24) <= 30;
+
+      let badgeTopo = '';
+      if (video.membros) {
+        badgeTopo = '<span class="badge-membros">★ Membros</span>';
+      } else if (video.novo || ehRecente) {
+        badgeTopo = '<span class="badge-novo">★ Novo</span>';
+      }
+
       const card = document.createElement('a');
       card.href = `https://www.youtube.com/watch?v=${video.id}`;
       card.target = '_blank';
@@ -75,12 +106,14 @@ document.addEventListener('DOMContentLoaded', () => {
       card.setAttribute('data-category', video.categoria);
 
       card.innerHTML = `
-        ${badgeMembros}
+        ${badgeTopo}
+        ${badgeCategoria}
         <img src="${thumbUrl}" alt="${video.titulo}" loading="lazy"
           onerror="this.onerror=null; this.src='https://img.youtube.com/vi/${video.id}/hqdefault.jpg';" />
         <div class="thumb-overlay">
           <h3>${video.titulo}</h3>
           <p>${video.descricao}</p>
+          ${dataHtml}
         </div>
       `;
       catalogGrid.appendChild(card);

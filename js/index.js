@@ -71,3 +71,86 @@ document.querySelectorAll('.thumb-carousel').forEach(carousel => {
   leftBtn.addEventListener('click', () => scrollToThumb('left'));
   rightBtn.addEventListener('click', () => scrollToThumb('right'));
 });
+
+function formatarData(dataISO) {
+  if (!dataISO) return '';
+  const [ano, mes, dia] = dataISO.split('-');
+  return `${dia}/${mes}/${ano}`;
+}
+
+// Carregar carrosséis da Home a partir dos videos.json de cada canal
+async function carregarCarrosselHome(containerId, jsonPath, limite = 8) {
+  const container = document.getElementById(containerId);
+  if (!container) return;
+
+  try {
+    const response = await fetch(jsonPath);
+    if (!response.ok) return; // Se o JSON ainda não existir, mantém o HTML atual
+
+    const videos = await response.json();
+
+    // Ordena do mais recente para o mais antigo (vídeos sem data vão para o fim)
+    videos.sort((a, b) => new Date(b.data || 0) - new Date(a.data || 0));
+
+    // Filtra apenas vídeos 16:9 (exclui Shorts) e limita a quantidade
+    const lancamentos = videos
+      .filter(v => !['short', 'live'].includes(v.categoria))
+      .slice(0, limite);
+
+    if (lancamentos.length === 0) return;
+
+    const nomesCategorias = {
+      episodio: 'Episódio',
+      trailer: 'Teaser / Trailer',
+      live: 'Live',
+      especial: 'Especial'
+    };
+
+    container.innerHTML = '';
+
+    lancamentos.forEach(video => {
+      const thumbUrl = video.thumb || `https://img.youtube.com/vi/${video.id}/maxresdefault.jpg`;
+      // Verifica se o vídeo saiu nos últimos 30 dias
+      const ehRecente = video.data && (Date.now() - new Date(video.data)) / (1000 * 60 * 60 * 24) <= 30;
+
+      let badgeTopo = '';
+      if (video.membros) {
+        badgeTopo = '<span class="badge-membros">★ Membros</span>';
+      } else if (video.novo || ehRecente) {
+        badgeTopo = '<span class="badge-novo">★ Novo</span>';
+      }
+      const nomeCat = nomesCategorias[video.categoria];
+      const badgeCategoria = nomeCat
+        ? `<span class="badge-categoria cat-${video.categoria}">${nomeCat}</span>`
+        : '';
+      const dataHtml = video.data ? `<span class="thumb-date">${formatarData(video.data)}</span>` : '';
+
+      const card = document.createElement('a');
+      card.href = `https://www.youtube.com/watch?v=${video.id}`;
+      card.target = '_blank';
+      card.rel = 'noopener noreferrer';
+      card.className = 'thumb';
+
+      card.innerHTML = `
+        ${badgeTopo}
+        ${badgeCategoria}
+        <img src="${thumbUrl}" alt="${video.titulo}" loading="lazy"
+          onerror="this.onerror=null; this.src='https://img.youtube.com/vi/${video.id}/hqdefault.jpg';" />
+        <div class="thumb-overlay">
+          <h3>${video.titulo}</h3>
+          <p>${video.descricao}</p>
+          ${dataHtml}
+        </div>
+      `;
+
+      container.appendChild(card);
+    });
+  } catch (erro) {
+    console.warn(`Ainda sem JSON em ${jsonPath}, a manter conteúdo estático.`);
+  }
+}
+
+// Ativar na Home
+carregarCarrosselHome('home-bonk-show', 'bonk-show/videos.json');
+carregarCarrosselHome('home-bonk-music', 'bonk-music/videos.json');
+carregarCarrosselHome('home-bonk-play', 'bonk-play/videos.json');

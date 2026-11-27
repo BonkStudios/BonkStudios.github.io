@@ -4,27 +4,44 @@
         "titulo": "THE COFFIN OF ANDY AND LEYLEY: A SÉRIE | PRIMEIROS MINUTOS",
         "descricao": "Parte 1 em 2027.",
         "categoria": "trailer",
-        "membros": false
+        "data": "2026-10-31",
+        "membros": false,
+        "novo": true
     },
     {
         "id": "dfQMw7jzWmQ",
         "titulo": "HAZBIN STORIES: ALASTOR | TEASER REVELAÇÃO",
         "descricao": "Episódio piloto em 2027.",
         "categoria": "trailer",
-        "membros": false
+        "data": "2026-10-31",
+        "membros": false,
+        "novo": true
+    },
+    {
+        "id": "6atkgrx3oFQ",
+        "titulo": "BONK EXPO LIVE 2026 (HALLOWEEN)",
+        "descricao": "Primeira Bonk Expo! Live especial de Halloween.",
+        "categoria": "live",
+        "data": "2026-10-31",
+        "membros": false,
+        "novo": false
     },
     {
         "id": "7G3xoQCKcD8",
         "titulo": "FIVE NIGHTS AT FREDDY'S: A SÉRIE | EPISÓDIO 2 REMASTER (A OBRA PRIMA)",
         "descricao": "Dois anos após os terríveis acontecimentos de 1983, as coisas parecem estar se acalmando na vida de William Afton, mas por quanto tempo ele conseguirá esconder sua verdadeira face?",
         "categoria": "episodio",
-        "membros": false
+        "data": "2025-12-25",
+        "membros": false,
+        "novo": false
     },
     {
         "id": "WY1f-WtO8RI",
         "titulo": "JOGANDO O FNAF NOVO! Secret of The Mimic",
         "descricao": "Live especial de gameplay.",
         "categoria": "live",
-        "membros": true
+        "data": "2025-06-14",
+        "membros": true,
+        "novo": false
     }
 ]
