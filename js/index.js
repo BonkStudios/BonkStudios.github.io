@@ -84,7 +84,7 @@ async function carregarCarrosselHome(containerId, jsonPath, limite = 8) {
   if (!container) return;
 
   try {
-    const response = await fetch(jsonPath);
+    const response = await fetch(jsonPath, { cache: 'no-store' });
     if (!response.ok) return; // Se o JSON ainda não existir, mantém o HTML atual
 
     const videos = await response.json();

@@ -30,7 +30,7 @@ document.addEventListener('DOMContentLoaded', () => {
   // Carrega os vídeos do ficheiro JSON
   async function carregarVideos() {
     try {
-      const response = await fetch('videos.json');
+      const response = await fetch('videos.json', { cache: 'no-store' });
       if (!response.ok) throw new Error('Não foi possível carregar videos.json');
       
       const videos = await response.json();
