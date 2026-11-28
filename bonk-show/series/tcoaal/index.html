@@ -4,8 +4,8 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>The Coffin of Andy and Leyley: A Série | Bonk Show</title>
-  <link rel="stylesheet" href="../../../css/index.css?v=4">
-  <link rel="stylesheet" href="../../../css/serie.css?v=3">
+  <link rel="stylesheet" href="../../../css/index.css?v=5">
+  <link rel="stylesheet" href="../../../css/serie.css?v=4">
   <link rel="icon" type="image/x-icon" href="../../../images/bonk_studios_favicon.ico">
   <style>
     /* Cores temáticas: Andrew (#7CD341) e Ashley (#F585C6) */
@@ -44,7 +44,8 @@
       <div class="serie-meta">
         <span class="age-badge">16+</span>
         <span>Animação • Suspense</span>
-        <span>• Áudio: PT, EN, ES, RU</span>
+        <span>• 6 Episódios (Em Produção)</span>
+        <span>• Áudio: PT, ES, RU, FR, TR</span>
       </div>
       <h1>The Coffin of Andy and Leyley: A Série</h1>
       <p class="serie-sinopse">
@@ -54,6 +55,21 @@
         <a href="https://www.youtube.com/watch?v=UD1Ed0PLuJM" target="_blank" rel="noopener noreferrer" class="btn-primary">
           &#9654; Assistir no YouTube
         </a>
+        <button type="button" class="btn-secondary" data-trailer="aQskL4yEQ88">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <rect x="2" y="4" width="20" height="16" rx="2.5"></rect>
+            <!-- Furos da película à esquerda e à direita -->
+            <line x1="6" y1="8" x2="6" y2="8.01"></line>
+            <line x1="6" y1="12" x2="6" y2="12.01"></line>
+            <line x1="6" y1="16" x2="6" y2="16.01"></line>
+            <line x1="18" y1="8" x2="18" y2="8.01"></line>
+            <line x1="18" y1="12" x2="18" y2="12.01"></line>
+            <line x1="18" y1="16" x2="18" y2="16.01"></line>
+            <!-- Play no centro -->
+            <polygon points="10 8.5 15.5 12 10 15.5 10 8.5" fill="currentColor" stroke="none"></polygon>
+          </svg>
+          Ver Trailer
+        </button>
         <a href="https://www.catarse.com.br/tcoal-bonkshow" target="_blank" rel="noopener noreferrer" class="btn-secondary">
           Apoiar no Catarse
         </a>
@@ -94,27 +110,13 @@
     </div>
   </section>
 
-  <!-- Elenco de Vozes -->
-  <section class="serie-section">
-    <h2>Elenco de Vozes</h2>
-    <div class="cast-grid">
-      <div class="cast-card">
-        <h4>Rodolfo Novaes</h4>
-        <span>Andy / Andrew Graves (Episódio Piloto)</span>
-      </div>
-      <div class="cast-card">
-        <h4>Mih Domínguez</h4>
-        <span>Leyley</span>
-      </div>
-      <div class="cast-card">
-        <h4>Rapha Rocha</h4>
-        <span>Ashley Graves</span>
-      </div>
-      <div class="cast-card">
-        <h4>Purple Moon</h4>
-        <span>Nina Mason</span>
-      </div>
+  <!-- Elenco de Vozes (carregado via cast.json) -->
+  <section class="serie-section" id="cast-section" data-cast-src="cast.json">
+    <div class="cast-header">
+      <h2>Elenco de Vozes</h2>
+      <div class="lang-tabs" role="tablist" aria-label="Idioma da dublagem"></div>
     </div>
+    <div class="cast-grid"></div>
   </section>
 
   <!-- Equipa de Produção (Agrupada por Departamento) -->
@@ -149,6 +151,8 @@
         <p><strong>Legendas:</strong> Souodudu</p>
         <p><strong>Tradução (EN/ES):</strong> Hunter</p>
       </div>
+
+      <div class="credit-group" id="dub-production-card" hidden></div>
     </div>
 
     <!-- Aviso Legal & Link da Steam -->
@@ -165,6 +169,6 @@
   <footer>
     <p>&copy; 2026 Bonk Studios. Todos os direitos reservados.</p>
   </footer>
-  <script src="../../../js/index.js?v=3"></script>
+  <script src="../../../js/index.js?v=4"></script>
 </body>
 </html>

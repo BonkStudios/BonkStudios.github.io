@@ -69,10 +69,15 @@
 }
 
 .btn-primary, .btn-secondary {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
   padding: 12px 24px;
   border-radius: 6px;
   text-decoration: none;
   font-weight: bold;
+  font-size: 1rem;
+  cursor: pointer;
   transition: transform 0.2s, opacity 0.2s;
 }
 
@@ -172,15 +177,135 @@
 /* Elenco */
 .cast-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  grid-template-columns: repeat(auto-fill, minmax(270px, 1fr));
   gap: 15px;
 }
 
+/* Cabeçalho do Elenco com seletor de idiomas */
+.cast-header {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 20px;
+  margin-bottom: 20px;
+}
+
+.cast-header h2 {
+  margin-bottom: 0;
+  line-height: 1.1;
+}
+
+.lang-tabs {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.lang-tab {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 46px;
+  height: 32px;
+  padding: 0 12px;
+  background: #1a1a1a;
+  color: #ccc;
+  border: 1px solid #333;
+  border-radius: 20px;
+  font-size: 0.85rem;
+  font-weight: 700;
+  line-height: 1;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.lang-tab:hover {
+  background: #2a2a2a;
+  color: #fff;
+}
+
+.lang-tab.active {
+  background: var(--serie-accent);
+  color: #111;
+  border-color: var(--serie-accent);
+}
+
+.cast-grid[hidden] {
+  display: none;
+}
+
 .cast-card {
+  display: flex;
+  align-items: stretch;
   background: #141414;
-  padding: 16px;
   border-radius: 8px;
   border: 1px solid #222;
+  overflow: hidden;
+  transition: border-color 0.2s ease;
+}
+
+.cast-card:hover {
+  border-color: rgba(255, 255, 255, 0.2);
+}
+
+a.cast-card {
+  text-decoration: none;
+  color: inherit;
+  cursor: pointer;
+}
+
+a.cast-card:hover,
+a.cast-card:focus-visible {
+  border-color: var(--serie-accent);
+  transform: translateY(-2px);
+}
+
+/* Mantém compatibilidade com cartões antigos (só texto, sem .cast-info) */
+.cast-card:not(:has(.cast-info)) {
+  flex-direction: column;
+  justify-content: center;
+  padding: 16px;
+}
+
+.cast-avatar {
+  width: 78px;
+  min-height: 78px;
+  flex-shrink: 0;
+  object-fit: cover;
+  background: #1c1c1c;
+  display: block;
+}
+
+/* Placeholder opcional com iniciais para quem ainda não tem foto */
+.cast-placeholder {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 700;
+  font-size: 1.15em;
+  color: var(--serie-accent);
+  border-right: 1px solid #222;
+}
+
+.cast-info {
+  padding: 12px 16px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  min-width: 0;
+}
+
+.cast-card h4 {
+  margin-bottom: 4px;
+  color: #fff;
+  font-size: 1rem;
+  line-height: 1.25;
+}
+
+.cast-card span {
+  font-size: 0.85em;
+  color: #aaa;
+  line-height: 1.35;
 }
 
 /* Grelha de Produção por Departamento */
@@ -215,7 +340,21 @@
   color: #fff;
 }
 
-/* Aviso Legal (Kit9 Studio) */
+.credit-group p a {
+  color: inherit;
+  text-decoration: underline;
+  text-decoration-color: rgba(255, 255, 255, 0.25);
+  text-underline-offset: 3px;
+  transition: color 0.2s ease, text-decoration-color 0.2s ease;
+}
+
+.credit-group p a:hover,
+.credit-group p a:focus-visible {
+  color: var(--serie-accent);
+  text-decoration-color: var(--serie-accent);
+}
+
+/* Aviso Legal */
 .serie-disclaimer {
   margin-top: 35px;
   padding: 18px 22px;
@@ -249,6 +388,121 @@
 
 .cast-card h4 { margin-bottom: 4px; color: #fff; }
 .cast-card span { font-size: 0.85em; color: #aaa; }
+
+/* Modal de Trailer */
+.trailer-modal {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.88);
+  backdrop-filter: blur(6px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+  z-index: 1000;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.25s ease;
+}
+
+.trailer-modal.active {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+.trailer-modal-content {
+  position: relative;
+  width: 100%;
+  max-width: 1000px;
+  background: #111;
+  border-radius: 12px;
+  box-shadow: 0 12px 40px rgba(0, 0, 0, 0.75);
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  overflow: visible;
+}
+
+.trailer-tabs {
+  display: flex;
+  gap: 8px;
+  padding: 12px 14px;
+  background: #161616;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 12px 12px 0 0;
+  overflow-x: auto;
+  scrollbar-width: none;
+}
+
+.trailer-tabs::-webkit-scrollbar {
+  display: none;
+}
+
+.trailer-tab {
+  background: rgba(255, 255, 255, 0.08);
+  color: #ccc;
+  border: 1px solid transparent;
+  padding: 6px 14px;
+  border-radius: 20px;
+  font-size: 0.85rem;
+  font-weight: 600;
+  white-space: nowrap;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.trailer-tab:hover {
+  background: rgba(255, 255, 255, 0.16);
+  color: #fff;
+}
+
+.trailer-tab.active {
+  background: var(--serie-accent, #ffb421);
+  color: #111;
+}
+
+.trailer-video-wrap {
+  width: 100%;
+  aspect-ratio: 16 / 9;
+  background: #000;
+  border-radius: 0 0 12px 12px;
+  overflow: hidden;
+}
+
+.trailer-modal-content.single-trailer .trailer-video-wrap {
+  border-radius: 12px;
+}
+
+.trailer-video-wrap iframe {
+  width: 100%;
+  height: 100%;
+  border: none;
+  display: block;
+}
+
+.trailer-modal-close {
+  position: absolute;
+  top: -44px;
+  right: 0;
+  background: rgba(20, 20, 20, 0.9);
+  color: #fff;
+  border: 1px solid rgba(255, 255, 255, 0.25);
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  font-size: 1.4rem;
+  line-height: 1;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background 0.2s, color 0.2s, border-color 0.2s;
+}
+
+.trailer-modal-close:hover,
+.trailer-modal-close:focus-visible {
+  background: var(--serie-accent, #ffb421);
+  color: #111;
+  border-color: var(--serie-accent, #ffb421);
+}
 
 @media (max-width: 700px) {
   .episode-row { flex-direction: column; }

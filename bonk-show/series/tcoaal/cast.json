@@ -1,0 +1,190 @@
+{
+  "idiomas": {
+    "pt": {
+      "label": "PT",
+      "elenco": [
+        {
+          "nome": "Rodolfo Novaes",
+          "personagem": "Andy / Andrew Graves (Episódio Piloto)",
+          "avatar": "../../../images/cast/rodolfo_novaes.jpg",
+          "link": ""
+        },
+        {
+          "nome": "Mih Domínguez",
+          "personagem": "Leyley",
+          "avatar": "",
+          "link": ""
+        },
+        {
+          "nome": "Rapha Rocha",
+          "personagem": "Ashley Graves",
+          "avatar": "",
+          "link": ""
+        },
+        {
+          "nome": "Purple Moon",
+          "personagem": "Nina Mason",
+          "avatar": "",
+          "link": ""
+        }
+      ],
+      "producao": []
+    },
+    "es": {
+      "label": "ES",
+      "elenco": [
+        {
+          "nome": "Ángel de la Cruz",
+          "personagem": "Andy / Andrew Graves",
+          "avatar": "",
+          "link": ""
+        },
+        {
+          "nome": "Denisse Fuentes",
+          "personagem": "Ashley / Leyley",
+          "avatar": "",
+          "link": ""
+        },
+        {
+          "nome": "Sinai Cabrera",
+          "personagem": "Nina Mason",
+          "avatar": "",
+          "link": ""
+        }
+      ],
+      "producao": [
+        { "funcao": "Estúdio", "valor": "Kuali Productions" },
+        { "funcao": "Direção de Dublagem", "valor": "Yahir Barrero" },
+        { "funcao": "Roteiro / Adaptação", "valor": "Guillermo Garcia" },
+        { "funcao": "Tradução", "valor": "Emanuel Chamorro" },
+        { "funcao": "Mixagem de Áudio", "valor": "Ángel de la Cruz" }
+      ]
+    },
+    "fr": {
+      "label": "FR",
+      "elenco": [
+        {
+          "nome": "Alexandre Herlemann",
+          "personagem": "Andy Graves",
+          "avatar": "",
+          "link": ""
+        },
+        {
+          "nome": "Sekiro Magne",
+          "personagem": "Andrew Graves",
+          "avatar": "",
+          "link": ""
+        },
+        {
+          "nome": "Maelyne Panek",
+          "personagem": "Ashley / Leyley Graves",
+          "avatar": "",
+          "link": ""
+        },
+        {
+          "nome": "Lilou Bazzana",
+          "personagem": "Nina Mason",
+          "avatar": "",
+          "link": ""
+        }
+      ],
+      "producao": [
+        {
+          "funcao": "Estúdio",
+          "valor": "Umag Productions",
+          "links": [
+            { "label": "YouTube", "url": "https://www.youtube.com/@UmagProductions" }
+          ]
+        },
+        { "funcao": "Direção Artística & Gestão", "valor": "Sekiro Magne" },
+        { "funcao": "Adaptação", "valor": "Sekiro Magne, Morgane Theres" },
+        { "funcao": "Assistência de Dublagem & Produção", "valor": "Maelyne Panek" },
+        { "funcao": "Gravação & Mixagem", "valor": "Victor Simard" },
+        { "funcao": "Deteção & Legendagem", "valor": "Madison Smac" }
+      ]
+    },
+    "ru": {
+      "label": "RU",
+      "elenco": [
+        {
+          "nome": "Ник Павлов",
+          "personagem": "Andrew Graves",
+          "avatar": "",
+          "link": ""
+        },
+        {
+          "nome": "Иван Шухин",
+          "personagem": "Andy Graves",
+          "avatar": "",
+          "link": ""
+        },
+        {
+          "nome": "Сар-Герел Менкенова",
+          "personagem": "Leyley",
+          "avatar": "",
+          "link": ""
+        },
+        {
+          "nome": "Изабелла Михеева",
+          "personagem": "Ashley Graves",
+          "avatar": "",
+          "link": ""
+        },
+        {
+          "nome": "Мария Логинова",
+          "personagem": "Nina Mason",
+          "avatar": "",
+          "link": ""
+        }
+      ],
+      "producao": [
+        {
+          "funcao": "Estúdio",
+          "valor": "NDRecords Production",
+          "links": [
+            { "label": "Site", "url": "https://ndrprod.com/" },
+            { "label": "VK", "url": "https://vk.com/by_ndr" },
+            { "label": "Telegram", "url": "https://t.me/TheGeekProduction" }
+          ]
+        },
+        { "funcao": "Direção de Dublagem & Tradução", "valor": "Игорь «Maxvil'» Богатырёв" },
+        { "funcao": "Codireção & Direção de Elenco", "valor": "Константин Леонтьев" },
+        { "funcao": "Mixagem & Tratamento de Áudio", "valor": "Кирилл Бакшаев" },
+        { "funcao": "Localização de Vídeo", "valor": "Данил «Mr.Enot» Енотаев, Яна Свиридова" },
+        { "funcao": "Direção de Localização", "valor": "Никита Мауров" },
+        { "funcao": "Supervisão", "valor": "Павел Луспекаев" },
+        { "funcao": "Legendas em Russo", "valor": "Вячеслав «LazyRoger» Минулин" }
+      ]
+    },
+    "tr": {
+      "label": "TR",
+      "elenco": [
+        {
+          "nome": "Evren Şenkaya",
+          "personagem": "Andy / Andrew Graves",
+          "avatar": "",
+          "link": ""
+        },
+        {
+          "nome": "Öykü Mimmeli",
+          "personagem": "Ashley / Leyley",
+          "avatar": "",
+          "link": ""
+        },
+        {
+          "nome": "Bilge Akyüz",
+          "personagem": "Nina Mason",
+          "avatar": "",
+          "link": ""
+        }
+      ],
+      "producao": [
+        { "funcao": "Estúdio", "valor": "Apollon Records" },
+        { "funcao": "Direção de Dublagem", "valor": "Teoman Çağan Akgöz, Miray Ç." },
+        { "funcao": "Tradução", "valor": "Evren Şenkaya, Teoman Çağan Akgöz" },
+        { "funcao": "Mixagem de Áudio", "valor": "Deniz Gezer" },
+        { "funcao": "Edição da Dublagem", "valor": "Teoman Çağan Akgöz" }
+      ]
+    }
+  }
+}
